@@ -1,0 +1,72 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Servidor: custsql-ipg118.eigbox.net
+-- Tiempo de generación: 05-01-2020 a las 17:18:06
+-- Versión del servidor: 5.6.41-84.1-log
+-- Versión de PHP: 7.0.33-0ubuntu0.16.04.6
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Base de datos: `db_monely`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vistas_prenda`
+--
+
+CREATE TABLE `vistas_prenda` (
+  `id_vistas_prenda` int(11) NOT NULL,
+  `vista_prenda` varchar(45) COLLATE utf8_spanish_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `vistas_prenda`
+--
+
+INSERT INTO `vistas_prenda` (`id_vistas_prenda`, `vista_prenda`) VALUES
+(1, 'Frontal'),
+(2, 'Espalda'),
+(3, 'Front'),
+(4, 'Back'),
+(5, 'Superior'),
+(6, 'Inferior'),
+(7, '- 3/4 -');
+
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `vistas_prenda`
+--
+ALTER TABLE `vistas_prenda`
+  ADD PRIMARY KEY (`id_vistas_prenda`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `vistas_prenda`
+--
+ALTER TABLE `vistas_prenda`
+  MODIFY `id_vistas_prenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
