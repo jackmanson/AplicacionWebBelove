@@ -1,59 +1,124 @@
-body{
-  background-color: #F7F7F7;
+@import url(main.css);
+
+/* LOGIN */
+.boxLogin_title{
+  display: inline-block;
+  color: #000;
+  background: #fff;
+  mix-blend-mode: multiply;
+  position: relative;
+  font-family: 'Catalish Huntera';
+  margin-bottom: 20px;
+  font-size: var(--xlg);
 }
 
-.cajaLogin{
-  background: white;
-  width: 30%;
-  margin: 5% 35%;
-  padding: 5%;
-  box-shadow: 0px 0px 20px #DFDFDF;
-  border-radius: 20px;
+.boxLogin_title:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--titulo-degrade);
+  mix-blend-mode: screen; /*atento a esta linea*/
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.recuperacionLogin a{
-  color: #808080;
+.containerBoxLoginFull{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boxLogin{
+  width: 400px;
+  margin-top: 70px;
+}
+
+.boxLogin label{
+  font-size: var(--md);  
+  font-weight: 700;
+  color: var(--charcol-claro);
+  margin-top: 4px;
+}
+
+.boxLogin_form_email,.boxLogin_form_pass{
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  font-size: var(--sm);
+  background-color: var(--white);
+  border: 1px solid var(--charcol-claro);
+  border-radius: 7px;
+  margin-bottom: 5px;
+}
+
+.boxLogin_form_button{
+  width: 100%;
+  height: 40px;
+  font-size: var(--lg);
+  border: none;
+  border-radius: 9px;
+  background: var(--fresa);
+  color: var(--white);
+  font-weight: 500;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.boxLogin_re-sesion{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -12px;
+}
+
+.boxLogin_relogin,.boxLogin_upLogin{
   text-decoration: none;
+  color: var(--charcol-claro);
+  margin: 0px 4px;
+  font-size: var(--sm);
 }
 
-.recuperacionLogin a:hover{
-  color: #336699;
+.boxLogin_upLogin{
+  font-weight: 500;
 }
 
-.checkbox label{
-  margin-right: 30px;
+.containerBoxLogin_modelo{
+ position: fixed; 
+ width: 400px;
 }
 
-.checkbox a{
-  margin-left: 1px;
+/* LOGOTIPO */
+.containerHeader_logo{
+  margin: 40px;
+  width: 120px;
 }
 
-.btn{
-  width: 100%;
+/* IMAGEN MODELO */
+.containerBoxLogin_modelo{
+  position: absolute;
+  bottom: 0px;
+  width: 30%;
 }
 
-@media (max-width:1100px) and (min-width:876px){
-
-  .cajaLogin{
-    width: 40%;
-    margin: 5% 30%;
-    padding: 4%;
-    padding-bottom: 10%;
-  } 
-
+@media (max-width: 900px){
+  .containerBoxLogin_modelo{
+    display: none;
+  }
 }
 
-@media (max-width:876px) and (min-width:50px){
+@media (max-width: 700px){
+  .boxLogin{
+    width: 100%;
+    /* margin-top: 0px; */
+    margin: 0px 20px;
+  }
 
-  .cajaLogin{
-  background: white;
-  width: 100%;
-  margin: 20px 0px;
-  padding: 10% ;
-  padding-bottom: 30%;
-  box-shadow: 0px 0px 0px #DFDFDF;
-  border-radius: 0px;
-  } 
-
-
+  .containerHeader{
+    display: flex;
+    justify-content: center;
+  }
 }

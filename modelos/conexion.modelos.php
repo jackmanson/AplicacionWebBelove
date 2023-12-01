@@ -5,7 +5,7 @@ class Conexion{
     // CONECCION A LA BASE DE DATOS DB_MONELY CON PDO (PHP DATA OBJECT)
     public function conectar(){
         
-        $link = new PDO("mysql:host=localhost;dbname=db_monely",
+        $link = new PDO("mysql:host=localhost;db_belove_modelo_1",
                         "root",
                         "",
                         array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -22,7 +22,7 @@ class Conexion{
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $data = "db_monely";
+        $data = "db_belove_modelo_1";
 
         // Create connection --MySQLi Procedural
         $con = mysqli_connect($servername,$username,$password,$data);
@@ -43,7 +43,7 @@ class Conexion{
         
         try{
             // Create connection
-            $con = new PDO('mysql:host=localhost;dbname=db_monely_portal','root','');
+            $con = new PDO('mysql:host=localhost;dbname=db_belove_modelo_1','root','');
             $con->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             // echo 'Conecion ok conection.'."<br/>";
             return $con;

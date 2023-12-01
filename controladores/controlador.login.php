@@ -7,6 +7,5 @@ class ControladorLogin{
         include "vistas/login.php";
 
     }
-
-    
+        
 }

@@ -66,7 +66,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $data = "db_monely";
+    $data = "db_belove_modelo_1";
     
     // Create connection --MySQLi Procedural
     $con = mysqli_connect($servername,$username,$password,$data);
@@ -75,13 +75,13 @@
     if (!$con) {
         die("<h1>Conección Fallida:</h1>" . mysqli_connect_error());
     }
-    //echo "<h1>Conectado Exitosamente.</h1>";
+    echo "<h1>Conectado Exitosamente.</h1>";
     
     
     // consulta para configurar la condificacion de caracteres
     mysqli_query($con, "SET NAMES 'utf8'");
     
-    $tabla = "tipo_documento"; // NOMBRE DE LA TABLA
+    $tabla = "prueba"; // NOMBRE DE LA TABLA
     $sql = "SELECT * FROM $tabla";
     
     $insert = mysqli_query($con,$sql);
@@ -91,6 +91,15 @@
     }else{
         echo '<script>alert("Error: $mysqli_error($insert)");</script>';
     }
+
+   
+    
+
+
+
+
+
+
 
     
                

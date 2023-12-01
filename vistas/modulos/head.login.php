@@ -1,12 +1,19 @@
 <title>myproduccion</title>
 	<meta charset="utf-8"/>
         
-        <meta name="keyswords" description="textil,polos,ropa,algodon,produccion textil,prendas,jersy,pyma,melange"/>
+    <meta name="keyswords" description="textil,polos,ropa,algodon,produccion textil,prendas,jersy,pyma,melange"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
 
     <script type="text/javascript" src="vistas/js/login.js"></script>
 	<link rel="stylesheet" type="text/css" href="vistas/css/login.css"/>
+
+
+
+
+
+
+
 
 
     <!-- Jquery v3.4.1 -->

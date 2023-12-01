@@ -15,7 +15,7 @@ class ModeloPrincipal{
 
         return $stmt -> fetch(); // fetch()--> llama un registro y fetchAll() --> llama todos los registros
 
-        $stmt -> close();
+        // $stmt -> close();
 	}
 
         

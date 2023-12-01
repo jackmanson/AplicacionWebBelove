@@ -10,7 +10,7 @@ function loginvalidandoLogin(){
         
         if(!expresion.test(email)){
             swall("Ingresar contraseña correcta","La contraseña solo puede tener mayúsculas, minúsculas y números.");
-            Return false;
+            return false;
         }
         
     }else{
@@ -18,5 +18,6 @@ function loginvalidandoLogin(){
         return false;
     }
 }
+
 
 

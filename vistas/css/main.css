@@ -1,0 +1,35 @@
+@import url(/vistas/fonts/CatalishHunteraItalic.otf);
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Quicksand', sans-serif; */
+  /* font-family: 'Dancing Script', cursive; */
+  /*font-size: 62.5%;*/ /* COn esto la fuente tiene 10px */
+  font-size: 100%; /* Con esto la fuente tiene 16px */
+  background: var(--beige);
+}
+
+:root{
+  --white: #FFFFFF;
+  --fresa: #e14069;
+  --beige: #f7f4f4;
+  --charcol-claro: #828486;
+  --charcol: hsl(204, 3%, 32%);
+  --rosado: #ffabc7;
+  --chicle: #ef7d9d;
+  --gris: #aeaeae;
+  --gris-claro:#d0d0d0;
+  --amarillo: #ffd600;
+  --rojo: #e30613;
+  --verde-claro: #bdd586;
+  --titulo-degrade:  linear-gradient(to right, #f49a44,#d51d74);
+  --sm: 0.875rem; /* 14px */
+  --md: 1rem; /* 16px */
+  --lg: 1.125rem; /*18px */
+  --xlg: 2rem; /*18px */
+}

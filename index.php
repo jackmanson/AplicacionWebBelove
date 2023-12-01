@@ -1,11 +1,15 @@
 <?php
 	//header("location: vistas/plantilla.php");
 
-	require_once "controladores/controlador.principal.php";
-    require_once "modelos/principal.modelos.php";
+	// LOGIN BACKEND
+    require_once "modelos/login.modelos.php";
+	require_once "controladores/controlador.login.php";
 
 
-	$redireccionPageIndex = new ControladorPrincipal();
-	$redireccionPageIndex -> principal();
-        
+	$redireccionPageIndex = new ControladorLogin();
+	$redireccionPageIndex -> login();
+	
+
+	
+
 
