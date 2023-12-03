@@ -16,6 +16,7 @@ body{
 
 :root{
   --white: #FFFFFF;
+  --black: #000000;
   --fresa: #e14069;
   --beige: #f7f4f4;
   --charcol-claro: #828486;
@@ -28,8 +29,13 @@ body{
   --rojo: #e30613;
   --verde-claro: #bdd586;
   --titulo-degrade:  linear-gradient(to right, #f49a44,#d51d74);
+  --menu-degrade:  linear-gradient(hsl(204, 3%, 32%),#828486);
+  --xsm: 0.625rem; /* 10px */
+  --msm: 0.75rem; /* 12px */
   --sm: 0.875rem; /* 14px */
   --md: 1rem; /* 16px */
   --lg: 1.125rem; /*18px */
-  --xlg: 2rem; /*18px */
+  --slg: 1.25rem; /* 20px */
+  --mlg: 1.75rem; /* 28px */
+  --xlg: 2rem; /*32px */
 }

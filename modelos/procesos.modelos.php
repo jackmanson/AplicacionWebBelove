@@ -15,7 +15,7 @@ class ModeloProcesos{
 
         return $stmt -> fetch(); // fetch()--> llama un registro y fetchAll() --> llama todos los registros
 
-        $stmt -> close();
+        // $stmt -> close();
 	}
         
         // Insertar datos  --> revisar si borrar
@@ -26,7 +26,7 @@ class ModeloProcesos{
 
         $stmt -> execute(); // esto ejecuta la funcion
 
-        $stmt -> close();
+        // $stmt -> close();
 	}
         
     // Insertar datos --> revisar si borrar

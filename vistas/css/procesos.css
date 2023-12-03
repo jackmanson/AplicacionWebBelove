@@ -1,31 +1,253 @@
-/* Remove the navbar's default margin-bottom and rounded borders */ 
-.navbar {
-    margin-bottom: 0;
-    border-radius: 0;
-}
-    
-/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-.row.content {height: 450px}
+@import url(main.css);
 
-/* Set gray background color and 100% height */
-.sidenav {
-padding-top: 20px;
-background-color: rgb(231, 231, 231);
-height: 100%;
+#containerFull{
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
 }
 
-/* Set black background color, white text and some padding */
-footer {
-color: rgb(155, 155, 155);
-padding: 15px;
+/* BARRA ICONOS */
+.containerIconos{
+    background: var(--white);
+    width: 48px;
+    height: 100vh;
+    position: fixed;
+    left: 0px;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0px 0px 3px 0px var(--charcol);
+    /* position: fixed;
+    top: 0px;
+    left: 0px; */
 }
 
-/* On small screens, set height to 'auto' for sidenav and grid */
-@media screen and (max-width: 767px) {
-    .sidenav {
-        height: auto;
-        padding: 15px;
+.containerIconos div{
+    padding: 0px;
+    margin: 0px;
+    width: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-times{
+    display: none;
+}
+
+.containerIconos .fa{
+    color: var(--fresa);
+    font-size: var(--slg);
+    margin: 12px 0px;
+    cursor: pointer;
+}
+
+/* MENU */
+.containerMenu{
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    left: 48px;
+    background: var(--menu-degrade);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--white);
+    /* position: fixed;
+    top: 0px;
+    left: 48px; */
+}
+
+.containerMenu_nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerMenu_logo2{
+    width: 90px;
+    margin-top: 40px;
+
+}
+.containerMenu_imageUser{
+    width: 60px;
+    margin-top: 16px;
+    border: 2px solid var(--fresa);
+    border-radius: 50%;
+}
+
+.containerMenu_nomUser{
+    font-weight: 200;
+    margin-top: 5px;
+    font-size: var(--md);
+}
+
+.containerMenu_nav ul{
+    padding: 0px;
+    margin: 0px;
+    margin-top: var(--xlg);
+}
+
+.containerMenu_nav li{
+    list-style: none;
+    text-align: center;
+    font-size: var(--md);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    width: 200px;
+    padding: 8px 0px;
+}
+
+.containerMenu_nav li:hover{
+    background-color: var(--fresa);
+}
+
+.containerMenu_buttonSession{
+    width: 60%;
+    margin: 0px 0px 20% 20%;
+    font-size: var(--xsm);
+    height: 26px;
+    border: none;
+    border-radius: 9px;
+    background: var(--fresa);
+    color: var(--white);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* SECCION PRINCIPAL LISTA */
+.containerLista{
+    width: 100%;
+    height: 100vh;
+    margin-left: 248px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.containerLista > section{
+    padding: 40px;
+}
+
+.containerLista_logo{
+    width: 120px;
+  }
+
+.containerLista_title{
+    display: inline-block;
+    color: #000;
+    background: #fff;
+    mix-blend-mode: multiply;
+    position: relative;
+    font-family: 'Catalish Huntera';
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: var(--mlg);
+}
+
+.containerLista_title:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: var(--titulo-degrade);
+    mix-blend-mode: screen; /*atento a esta linea*/
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.containerLista_registros{
+    width: 100%;
+    font-size: var(--msm);
+    color: var(--charcol);
+}
+
+.containerLista_fila{
+    width: 100%;
+    height: 80px;
+    margin-bottom: 6px;
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 35px;
+}
+
+.containerLista_fila > p{
+    margin: 0px;
+    padding: 12px;
+    justify-self: start;
+    align-self: center;
+}
+
+.containerLista_fila:hover{
+    background-color: var(--gris-claro);
+    color: var(--black);
+}
+
+.containerLista_buttonAG{
+    width: 280px;
+    margin-top: 16px;
+    font-size: var(--sm);
+    height: 30px;
+    border: none;
+    border-radius: 9px;
+    background: var(--fresa);
+    color: var(--white);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* CONTENEDOR LISTA - FOOTER */
+.containerLista > footer{
+    width: 100%;
+    height: 120px;
+    padding: 18px 40px;
+    background-color: var(--gris);
+    display: flex;
+    justify-content: space-between;
+    color: var(--black);
+}
+
+footer h4{
+    font-size: var(--sm);
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+
+footer p{
+    margin: 0px;
+    padding: 0px;
+    text-align: right;
+}
+
+footer .fa{
+    color: var(--fresa);
+}
+
+.containerLista_datos{
+    font-size: var(--msm);
+}
+
+.containerLista_politicas,.containerLista_contacto{
+    font-size: var(--xsm);
+    margin-left: 70px;
+}
+
+.containerLista_info{
+    display: flex;
+    justify-content: end;
+}
+
+@media (min-width: 1400px){
+    .containerLista_registros{
+        font-size: var(--md);
     }
-    .row.content {height:auto;} 
+    .containerLista_datos{
+        font-size: var(--md);
+    }
+    .containerLista_politicas,.containerLista_contacto{
+        font-size: var(--msm);
+        margin-left: 70px;
+    }
 }
-
