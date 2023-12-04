@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<title>myproduccion &reg;</title>
+	<title>BeLove &reg;</title>
 	<meta charset="utf-8"/>
-        <meta name="keyswords" description="textil,polos,ropa,algodon,produccion textil,prendas,jersy,pyma,melange"/>
+        <meta name="keyswords" description="salon maquillaje, peinados, cortes de cabello, cepillados, pedicure, manicure, tintes, barberia, ofertas especiales"/>
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
