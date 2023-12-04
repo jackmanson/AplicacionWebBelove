@@ -12,7 +12,7 @@
     <div id="app">
         <h1>{{ message }}</h1>
         <br/>
-        <input type="text" v-model="message"> <!-- DATA BINDING -->
+        <input type="text"> <!-- DATA BINDING -->
     </div>
 
     
