@@ -2,7 +2,7 @@ const { createApp, ref } = Vue
 
 createApp({
     setup() {
-    const message = ref('Hello Mundo desde vue!')
+    const message = ref('')
     return {
         message
     }
