@@ -18,11 +18,10 @@
 <body>
 
     <main id="app">
-        <div class="caja1">
-            <h1>{{ message }}</h1>
-            <input type="text" v-model="message">
-            <p v-bind:align=message>Aute in id dolore nisi veniam occaecat ex in duis. Velit in ullamco sit occaecat Lorem adipisicing excepteur dolor aute ex. Dolore aute adipisicing non eiusmod fugiat labore ea sunt nulla fugiat. Irure eu aliqua nisi incididunt veniam ipsum. Aute in id dolore nisi veniam occaecat ex in duis. Velit in ullamco sit occaecat Lorem adipisicing excepteur dolor aute ex. Dolore aute adipisicing non eiusmod fugiat labore ea sunt nulla fugiat. Irure eu aliqua nisi incididunt veniam ipsum.</p>
-        </div>
+        <input type="text" v-model="message">
+        <h1 v-if="message==1">El dia esta nublado</h1>
+        <h1 v-else-if="message==2">El dia esta muy lluvioso</h1>
+        <h1 v-else="message==3">El dia esta muy soleado</h1>
     </main>
 
     

@@ -2,12 +2,14 @@ const { createApp, ref } = Vue
 
 createApp({
     setup() {
-    const message = ref('')
+    const message = ref('1')
     return {
         message
     }
     }
 }).mount('#app')
+
+
 
 // const card = new Vue({
 //     el: '#app2',
@@ -15,3 +17,5 @@ createApp({
 //         message: 'Hola Jasson desde Vue.js'
 //     }
 // })
+
+
