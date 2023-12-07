@@ -8,13 +8,29 @@
 </head>
 <body>
 
-    <main id="app">
+    <!-- <main id="app">
         <input type="number" v-model="message">
         <h1 v-if="message==1">El dia esta nublado</h1>
         <h1 v-else-if="message==2">El dia esta muy lluvioso</h1>
-    </main>
+    </main> -->
 
     
+    <!-- Controlador absoluto de este elemento     -->
+    <div id="myApp">
+        <h1>Hola Mundo en Vue</h1>
+        <p>Saludos a todos.</p>
+        <h4>{{ 1 + 1 }}</h4>
+        <h4>{{'Jack' + ' Manxon'}}</h4>
+        <h4>{{ message }}</h4>
+        <h4>{{ quote }}</h4>
+        <blockquote>{{ author }}</blockquote>
+        <button  v-on:click="changeQuote">
+            Cambiar
+        </button>
+    </div>
+
+
+
 
 
     <!-- Using Vue from CDN -->
