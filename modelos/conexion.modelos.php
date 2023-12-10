@@ -3,18 +3,25 @@
 class Conexion{
     
     // CONECCION A LA BASE DE DATOS DB_MONELY CON PDO (PHP DATA OBJECT)
-    public function conectar(){
+    public function conectarPOO(){
         
-        $link = new PDO("mysql:host=localhost;db_belove_modelo_1",
-                        "root",
-                        "",
-                        array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-                              PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
-                        );
-        
-        return $link;
+        try{
+
+            $link = new PDO("mysql:host=localhost;db_belove_modelo_1",
+                            "root",
+                            "",
+                            array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                                  PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8")
+                            );
+            
+            return $link;
+
+        }catch(Exception $e){
+            die('Error: '.$e->GetMessage());
+        }finally{
+            $link = null;
+        }
     }
-    
     
     // PARA CONECCIONES DE PHP --> MySQLi Procedural
     public function conectarProcedural(){
@@ -28,15 +35,20 @@ class Conexion{
         $con = mysqli_connect($servername,$username,$password,$data);
         
         // Check connection
-        //if (!$con) {
-        //    die("<h1>Conección Fallida de conexion.modelos.php:</h1>" . mysqli_connect_error());
-        //}
+        if (!$con) {
+            echo "Error: No se pudo conectar a MySQL." . PHP_EOL."<br/>";
+            echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL."<br/>";
+            echo "error de depuración: " . mysqli_connect_error() . PHP_EOL."<br/>";
+            exit;
+        }
+        
+        echo "Éxito: Se realizó una conexión apropiada a MySQL! La base de datos mi_bd es genial." . PHP_EOL."<br/>";
+        echo "Información del host: " . mysqli_get_host_info($con) . PHP_EOL."<br/>";
+
+        mysqli_set_charset($con,"utf8");
 
         return $con;
     }
-    
-    
-    
     
     // CONECCION A LA BASE DE DATOS DB_MONELY_PORTAL CON PDO (PHP DATA OBJECT)
     public function conectarPortal(){

@@ -15,7 +15,19 @@
         <input type="text" v-model="message"> <!-- DATA BINDING -->
     </div>
 
-    
+    <?php
+
+        $no1 = 'Juan';
+        $no2 = 'Pedro';
+        $res = strcasecmp($no1,$no2);
+
+        if($res){
+            echo 'No son iguales';
+        }else{
+            echo 'Son iguales';
+        }
+        
+    ?>
 
 
 

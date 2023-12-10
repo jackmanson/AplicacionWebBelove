@@ -6,8 +6,8 @@
       $miHead = new ControladorHead();
       $miHead -> HeadModelos();
   ?>
-  <link rel="stylesheet" type="text/css" href="vistas//css/login.css"/>                                                           
- 
+  <link rel="stylesheet" type="text/css" href="vistas/css/login.css"/>                                                           
+
 </head>
 <body>
 
@@ -24,7 +24,7 @@
         
       <h1 class="boxLogin_title">Iniciar Sesión</h1>
       
-      <form method="post" action="#" onsubmit="return loginvalidandoLogin()" class="boxLogin_form">
+      <form method="post" action="vistas/procesos/validaLogin.php" class="boxLogin_form"> <!-- onsubmit="return loginvalidandoLogin()" -->
           <!-- <div class="form-group"> -->
             <label for="email">Email</label>
             <input type="email" class="boxLogin_form_email" placeholder="Correo electrónico" name="email">
@@ -33,7 +33,7 @@
             <label for="pwd">Contraseña</label>
             <input type="password" class="boxLogin_form_pass" placeholder="Contraseña" name="pwd">
           <!-- </div> -->
-          <button type="submit" class="boxLogin_form_button">INICIAR</button>
+          <button type="submit" class="boxLogin_form_button" name="enviar">INICIAR</button>
       </form>
       
       <br/>
@@ -43,20 +43,15 @@
           <a href="registro.php" class="boxLogin_upLogin">Registrarse</a>
       </div>
 
-
     </div>
   </section>
 
-	
 
+  <!-- Jquery v3.4.1 -->
+  <script type="text/javascript" src="vistas/js/jquery_v3.4.1.js"></script>
 
-
-
+  <!-- Js Login -->
   <script type='text/javascript' src="vistas/js/login.js"></script>  
 
 </body>
 </html>
-
-
-
-
