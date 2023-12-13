@@ -96,6 +96,7 @@
     letter-spacing: 0.5px;
     width: 200px;
     padding: 8px 0px;
+    cursor: pointer;
 }
 
 .containerMenu_nav li:hover{
@@ -163,23 +164,108 @@
     color: var(--charcol);
 }
 
-.containerLista_fila{
+.containerLista-head{
+    color: var(--fresa);
+    font-weight: 600;
+}
+
+.fa-plus-circle,.fa-trash{
+    font-size: var(--slg);
+    cursor: pointer;
+}
+
+.containerLista_registros>.containerLista_filaCitas,
+.containerLista_registros>.containerLista_filaClientes,
+.containerLista_registros>.containerLista_filaAtencion,
+.containerLista_registros>.containerLista_filaPedidos,
+.containerLista_registros>.containerLista_filaPromociones,
+.containerLista_registros>.containerLista_filaDescuentos,
+.containerLista_registros>.containerLista_filaCatalogo,
+.containerLista_registros>.containerLista_filaProductos,
+.containerLista_registros>.containerLista_filaServicios,
+.containerLista_registros>.containerLista_filaEmpleados{
     width: 100%;
     height: 80px;
     margin-bottom: 6px;
     background: var(--white);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 35px;
 }
 
-.containerLista_fila > p{
+.containerLista_filaCitas{
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaClientes{
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaAtencion{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaPedidos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaPromociones{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaDescuentos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaCatalogo{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaProductos{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaServicios{
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaEmpleados{
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaCitas > p,
+.containerLista_filaClientes>p,
+.containerLista_filaAtencion>p,
+.containerLista_filaPedidos>p,
+.containerLista_filaPromociones>p,
+.containerLista_filaDescuentos>p,
+.containerLista_filaCatalogo>p,
+.containerLista_filaProductos>p,
+.containerLista_filaServicios>p,
+.containerLista_filaEmpleados>p{
     margin: 0px;
     padding: 12px;
     justify-self: start;
     align-self: center;
 }
 
-.containerLista_fila:hover{
+.containerLista_filaCitas:hover,
+.containerLista_filaClientes:hover,
+.containerLista_filaAtencion:hover,
+.containerLista_filaPedidos:hover,
+.containerLista_filaPromociones:hover,
+.containerLista_filaDescuentos:hover,
+.containerLista_filaCatalogo:hover,
+.containerLista_filaProductos:hover,
+.containerLista_filaServicios:hover,
+.containerLista_filaEmpleados:hover{
     background-color: var(--gris-claro);
     color: var(--black);
 }
@@ -239,6 +325,20 @@ footer .fa{
     justify-content: end;
 }
 
+/* css Frontend min-width = desde aqui en adelante 
+se aplica los siguientes cambio */
+@media (min-width: 1000px){
+
+    .containerLista_registros>.containerLista_filaCitas{
+        font-size: var(--msm);
+    }
+    
+    .containerLista_filaCitas{
+        grid-template-columns: 40px 1fr 1fr 1fr 200px 1fr 1fr 1fr 50px;
+    }
+    
+}
+
 @media (min-width: 1400px){
     .containerLista_registros{
         font-size: var(--md);
@@ -250,4 +350,47 @@ footer .fa{
         font-size: var(--msm);
         margin-left: 70px;
     }
+    
+    .containerLista_registros>.containerLista_filaCitas{
+        font-size: var(--sm);
+    }
+}
+
+@media (min-width: 1700px){
+    
+    .containerLista_filaCitas{
+        grid-template-columns: 50px 1fr 1fr 1fr 350px 1fr 1fr 1fr 60px;
+    }
+    
+}
+
+@media (min-width: 1900px){
+    
+    .containerLista_filaCitas{
+        grid-template-columns: 60px 1fr 1fr 1fr 450px 1fr 1fr 1fr 60px;
+    }
+
+    .containerLista_registros>.containerLista_filaCitas{
+        font-size: var(--md);
+    }
+
+}
+
+@media (min-width: 2200px){
+    
+    .containerLista_filaCitas{
+        grid-template-columns: 60px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 60px;
+    }
+
+    .containerLista_registros>.containerLista_filaCitas{
+        font-size: var(--md);
+    }
+
+}
+
+/* css Frontend max-width significa HASTA la
+medida que le coloques aplicara lo que se especifique */
+@media (max-width: 1300px){
+
+
 }

@@ -1,103 +1,158 @@
-$(document).ready(function(){
-    console.log("Hola jquery")
 
-  // SELECTOR DEL MENU DEL LADO IZQUIERDO
-  $(".list-group-item").click(function(){
-      //$(this).css("background","red");
-      $(".list-group-item").removeClass("active");
-      $(this).addClass("active");
-      console.log("click");
-  });
-
-   // SELECTOR DE ASIDE LADO DERECHO
-  $(".miAside").hide(); // ocualta la barra derecha
-  
-  // TAMAÑO DE IMAGEN
-  $("#imagenUsuario").height("2em").css("margin","0.8em");
-
-  // MENU DE USUARIO/*
-  var usuarioMenu1 = $( "#usuarioMenu" ).menu();
-  usuarioMenu1.width("180px").hide();
-
-  $("#imagenUsuario").click(function(){ // ocualta y muestra el MENU DE USUARIO
-    usuarioMenu1.toggle("fade"); 
-  });
-
-  // clic al body del documento para que se oculte el MENU DE USUARIO
-  $(document).click(function(){
-    usuarioMenu1.width("180px").hide();    
-  });
-
-  // login
-  $(".classLogin").hide();
-
-
-
-  /* AUTOCOMPLETADO EN EL BUSCADOR */
-  var availableTags = [
-      "ActionScript",
-      "AppleScript",
-      "Asp",
-      "BASIC",
-      "C",
-      "C++",
-      "Clojure",
-      "COBOL",
-      "ColdFusion",
-      "Kuickic",
-      "Erlang",
-      "Fortran",
-      "Groovy",
-      "Haskell",
-      "Java",
-      "JavaScript",
-      "Lisp",
-      "Perl",
-      "PHP",
-      "Python",
-      "Ruby",
-      "Scala",
-      "Scheme"
-    ];
-    $( "#tags" ).autocomplete({
-      source: availableTags
-    });
-
-    // BARRA IZQUIERDA
-
-
-
-    // BOTTON CIRCULAR
-    $(".botonCircular").css("border-radius","50%");
-
-    
-
-    // TABLA HOVER EN REGISTROS
-    /*$("tr").css("background","white"); --> FUNCIONA TAMBIEN CON ESTE PERO CON BOOSTRAP ES MAS SIMPLE YA ESTA INCORPORADO
-   
-    $("tr").mouseover(function(){
-    
-      if($("tr").css("background")=="#f9f9f9"){
-        $(this).css("background","#ffffff");
-      }else {
-        $(this).css("background","#f9f9f9");
+const app = Vue.createApp({
+  // template: `
+  // `
+  watch: {},
+  setup() {}, // COMPOSITION API
+  data(){
+      return {
+          title_lista: 'Lista de Citas',
+          Citas: '1',
+          Clientes: '0',
+          Atencion: 0,
+          Pedidos: 0,
+          Promociones: 0,
+          Descuentos: 0,
+          Catalogo: 0,
+          Productos: 0,
+          Servicios: 0,
+          Empleados: 0
       }
-      
-    });
-
-    $("tr").mouseout(function(){
-
-      if($("tr").css("background")=="#ffffff"){
-        $(this).css("background","#f9f9f9f");
-      }else{
-        $(this).css("background","#ffffff");
+  },
+  methods: {
+      listaCitas(){
+        this.title_lista = 'Lista de Citas'
+        this.Citas = '1'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaClientes(){
+        this.title_lista = 'Lista de Clientes'
+        this.Citas = '0'
+        this.Clientes = '1'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaAtencion(){
+        this.title_lista = 'Lista de Atención al Cliente'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '1'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaPedidos(){
+        this.title_lista = 'Lista de Pedidos'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '1'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaPromocines(){
+        this.title_lista = 'Lista de Promociones'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '1'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaDescuentos(){
+        this.title_lista = 'Lista de Descuentos'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '1'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaCatalogo(){
+        this.title_lista = 'Catálogo'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '1'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaProductos(){
+        this.title_lista = 'Lista de Productos'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '1'
+        this.Servicios = '0'
+        this.Empleados = '0'
+      },
+      listaServicios(){
+        this.title_lista = 'Lista de Servicios'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '1'
+        this.Empleados = '0'
+      },
+      listaEmpleados(){
+        this.title_lista = 'Lista de Empleados'
+        this.Citas = '0'
+        this.Clientes = '0'
+        this.Atencion = '0'
+        this.Pedidos = '0'
+        this.Promociones = '0'
+        this.Descuentos = '0'
+        this.Catalogo = '0'
+        this.Productos = '0'
+        this.Servicios = '0'
+        this.Empleados = '1'
       }
+  } // OPTION API
+})
 
-    });*/
-
-    // FOOTER BOTTON
-    $(".footerBotton").css("margin-top","10%");
-    
-});
+app.mount("#containerFull")
 
 
