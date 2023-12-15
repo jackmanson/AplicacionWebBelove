@@ -16,12 +16,14 @@ const app = Vue.createApp({
           Catalogo: 0,
           Productos: 0,
           Servicios: 0,
-          Empleados: 0
+          Empleados: 0,
+          botonCrear: ''
       }
   },
   methods: {
       listaCitas(){
         this.title_lista = 'Lista de Citas'
+        this.botonCrear = 'Crear Cita'
         this.Citas = '1'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -35,6 +37,7 @@ const app = Vue.createApp({
       },
       listaClientes(){
         this.title_lista = 'Lista de Clientes'
+        this.botonCrear = 'Registrar Cliente'
         this.Citas = '0'
         this.Clientes = '1'
         this.Atencion = '0'
@@ -48,6 +51,7 @@ const app = Vue.createApp({
       },
       listaAtencion(){
         this.title_lista = 'Lista de Atención al Cliente'
+        // this.botonCrear = 'Crear'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '1'
@@ -61,6 +65,7 @@ const app = Vue.createApp({
       },
       listaPedidos(){
         this.title_lista = 'Lista de Pedidos'
+        this.botonCrear = 'Crear Pedido'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -74,6 +79,7 @@ const app = Vue.createApp({
       },
       listaPromocines(){
         this.title_lista = 'Lista de Promociones'
+        this.botonCrear = 'Crear Promoción'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -87,6 +93,7 @@ const app = Vue.createApp({
       },
       listaDescuentos(){
         this.title_lista = 'Lista de Descuentos'
+        this.botonCrear = 'Crear Descuento'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -100,6 +107,7 @@ const app = Vue.createApp({
       },
       listaCatalogo(){
         this.title_lista = 'Catálogo'
+        this.botonCrear = 'Agregar Producto'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -113,6 +121,7 @@ const app = Vue.createApp({
       },
       listaProductos(){
         this.title_lista = 'Lista de Productos'
+        this.botonCrear = 'Crear Producto'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -126,6 +135,7 @@ const app = Vue.createApp({
       },
       listaServicios(){
         this.title_lista = 'Lista de Servicios'
+        this.botonCrear = 'Agregar Servicio'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'
@@ -139,6 +149,7 @@ const app = Vue.createApp({
       },
       listaEmpleados(){
         this.title_lista = 'Lista de Empleados'
+        this.botonCrear = 'Agregar Empleado'
         this.Citas = '0'
         this.Clientes = '0'
         this.Atencion = '0'

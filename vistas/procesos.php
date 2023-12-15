@@ -79,7 +79,7 @@
 						<p class="containerLista_item containerLista-head">CELULAR</p>
 						<p class="containerLista_item containerLista-head">CUMPLEAÑOS</p>
 						<p class="containerLista_item containerLista-head">COLABORADOR QUE REGISTRO</p>
-						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+						<p class="containerLista_item containerLista-head"><a href="registro.php"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></p>
 					</div>
 				</section>
 				<section class="containerLista_registros" v-if="Clientes == 1">
@@ -224,7 +224,16 @@
 				</section>
 
 				<!-- BOTON DE CREAR CITA -->
-				<button class="containerLista_buttonAG" type="submit">AGREGAR CLIENTE</button>
+				<a href=""><button class="containerLista_buttonAG" v-if="Citas == 1">{{ botonCrear }}</button></a>
+				<a href="registro.php"><button class="containerLista_buttonAG" v-if="Clientes == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Atencion == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Pedidos == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Promociones == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Descuentos == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Catalogo == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Productos == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Servicios == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Empleados == 1">{{ botonCrear }}</button></a>
 			</section>
 
 			<!-- SECTION DE FOTTER -->
@@ -267,7 +276,7 @@
 		<!-- MENU -->
 		<header class="containerMenu">
 			<nav class="containerMenu_nav">
-				<img src="vistas/img/logo_belove_2.webp" alt="Logo Belove 2" class="containerMenu_logo2">
+				<a href="gestion.php"><img src="vistas/img/logo_belove_2.webp" alt="Logo Belove 2" class="containerMenu_logo2"></a>
 				
 				<img src="vistas/img/userEjemplo.png" alt="usuario_sesion" class="containerMenu_imageUser">
 				<p class="containerMenu_nomUser">Juliana Angers</p>

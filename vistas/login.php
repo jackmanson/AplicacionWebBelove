@@ -48,7 +48,7 @@
 
 
   <!-- Jquery v3.4.1 -->
-  <script type="text/javascript" src="vistas/js/jquery_v3.4.1.js"></script>
+  <!-- <script type="text/javascript" src="vistas/js/jquery_v3.4.1.js"></script> -->
 
   <!-- Js Login -->
   <script type='text/javascript' src="vistas/js/login.js"></script>  

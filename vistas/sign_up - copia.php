@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <?php
-    $miHead = new ControladorHead();
-    $miHead -> head();
+    // $miHead = new ControladorHead();
+    // $miHead -> head();
 ?>
         
         <!-- main CSS --> 
