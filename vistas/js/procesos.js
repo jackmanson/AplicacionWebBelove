@@ -6,8 +6,8 @@ const app = Vue.createApp({
   setup() {}, // COMPOSITION API
   data(){
       return {
-          title_lista: 'Lista de Citas',
-          Citas: '1',
+          title_lista: '',
+          Citas: '0',
           Clientes: '0',
           Atencion: 0,
           Pedidos: 0,

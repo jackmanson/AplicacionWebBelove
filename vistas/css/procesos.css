@@ -134,6 +134,24 @@
     width: 120px;
   }
 
+.containerLista_tituloBuscar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerLista_inputBuscar{
+    width: 300px;
+    height: 35px;
+    padding: 6px 10px;
+    background: var(--white);
+    color: var(--charcol);
+    border-radius: 9px;
+    border-color: var(--chicle);
+    border-style: hidden;
+}
+
 .containerLista_title{
     display: inline-block;
     color: #000;

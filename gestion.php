@@ -5,6 +5,7 @@
          */
     // LLAMANDO A PROCESOS
     require_once "controladores/controlador.procesos.php";
+
     $login = new ControladorProcesos();
     $login -> procesos();
 

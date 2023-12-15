@@ -10,7 +10,10 @@
 	<link rel="stylesheet" href="vistas/font-awesome-4.7.0/css/font-awesome.min.css">
 
 	<!-- estilos CSS -->
-	<link rel="stylesheet" type="text/css" href="vistas//css/procesos.css"/>                                                           
+	<link rel="stylesheet" type="text/css" href="vistas//css/procesos.css"/>       
+	
+	<!-- LIBRERIAS DE CDN VUE JS -->
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 	
 </head>
 <body>
@@ -24,11 +27,25 @@
 			<section>
 				<!-- LOGOTIPO DE LA EMPRESA -->
 				<header>
-					<img src="vistas/img/logo_belove.webp" alt="Logo Belove" class="containerLista_logo">
+				<a href="gestion.php"><img src="vistas/img/logo_belove.webp" alt="Logo Belove" class="containerLista_logo"></a>
 				</header>
 
-				<!-- TITULO DE LAS LISTAS -->
-				<h1 class="containerLista_title">{{ title_lista }}</h1>
+				<!-- TITULO Y BUSCADOR -->
+				<section class="containerLista_tituloBuscar">
+					<h1 class="containerLista_title">{{ title_lista }}</h1>
+					<form class="containerLista_buscar" method="POST" action="gestion.php">
+						<input class="containerLista_inputBuscar" type="search" name="buscarCitas" placeholder="Buscar Citas" v-if="Citas == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarClientes" placeholder="Buscar Clientes" v-if="Clientes == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarAtencion" placeholder="Buscar Atención" v-if="Atencion == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarPedidos" placeholder="Buscar Pedidos" v-if="Pedidos == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarPromociones" placeholder="Buscar Promociones" v-if="Promociones == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarDescuentos" placeholder="Buscar Descuentos" v-if="Descuentos == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarCatalogo" placeholder="Buscar Catalogo" v-if="Catalogo == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarProductos" placeholder="Buscar Productos" v-if="Productos == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarServicios" placeholder="Buscar Servicios" v-if="Servicios == 1"/>
+						<input class="containerLista_inputBuscar" type="search" name="buscarEmpleados" placeholder="Buscar Empleados" v-if="Empleados == 1"/>
+					</form>
+				</section>
 
 				<!-- LISTA DE CITAS -->
 				<section class="containerLista_registros" v-if="Citas == 1">
@@ -69,9 +86,10 @@
 						<?php 
 							require_once "controladores/controlador.procesos.php";     
 							require_once "modelos/procesos.modelos.php";
-					
+
 							$listaClientes = new ControladorProcesos();
 							$listaClientes -> controlListaClientes();
+					
 						?>
 				</section>
 
@@ -276,10 +294,9 @@
 
 
 
-	<!-- LIBRERIAS DE CDN VUE JS -->
-	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
-  	<!-- Js Login -->
+
+  	<!-- Js Procesos -->
   	<script type='text/javascript' src="vistas/js/procesos.js"></script>  
 
 </body>
