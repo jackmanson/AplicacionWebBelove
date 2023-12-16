@@ -1,27 +1,148 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 28 mar. 2020, 23:19:59
-    Author     : jackmanson
-*/
+@import url(main.css);
 
-body{
- 
+/* RegistroCliente */
+.boxRegistroCliente_title{
+  display: inline-block;
+  color: #000;
+  background: #fff;
+  mix-blend-mode: multiply;
+  position: relative;
+  font-family: 'Catalish Huntera';
+  margin-bottom: 20px;
+  font-size: var(--xlg);
 }
 
-.formularioRegistro{
-
+.boxRegistroCliente_title:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--titulo-degrade);
+  mix-blend-mode: screen; /*atento a esta linea*/
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-h2{
-    margin: 50px;
+.containerBoxRegistroClienteFull{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-content: center; */
 }
 
-.classTerminos{
-    margin-left: 3px;
-    color: #336699;
-    cursor: pointer;
+.boxRegistroCliente{
+  width: 600px;
+  margin: 120px;
 }
+
+.boxRegistroCliente label{
+  font-size: var(--md);  
+  font-weight: 700;
+  color: var(--charcol-claro);
+  margin-top: 4px;
+}
+
+.boxRegistroCliente_form_email,
+.boxRegistroCliente_form_text,
+.boxRegistroCliente_form_pass{
+  width: 100%;
+  height: 30px;
+  padding: 5px;
+  font-size: var(--sm);
+  background-color: var(--white);
+  border: 1px solid var(--charcol-claro);
+  border-radius: 7px;
+  margin-bottom: 5px;
+}
+
+.boxRegistroCliente_form_button{
+  width: 100%;
+  height: 40px;
+  font-size: var(--lg);
+  border: none;
+  border-radius: 9px;
+  background: var(--fresa);
+  color: var(--white);
+  font-weight: 500;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.boxRegistroCliente_re-sesion{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: -12px;
+}
+
+.boxRegistroCliente_reRegistroCliente,.boxRegistroCliente_upRegistroCliente{
+  text-decoration: none;
+  color: var(--charcol-claro);
+  margin: 0px 4px;
+  font-size: var(--sm);
+}
+
+.boxRegistroCliente_upRegistroCliente{
+  font-weight: 500;
+}
+
+
+/* LOGOTIPO */
+.containerHeader_logo{
+    position: absolute;
+    margin: 40px;
+    width: 120px;
+}
+
+
+/* IMAGEN MODELO */
+.containerBoxRegistroCliente_modelo{
+    position: absolute;
+    bottom: 0px;
+    width: 30%;
+}
+
+@media (max-width: 1400px){
+    
+    .boxRegistroCliente{
+        width: 40%;
+        margin: 80px;
+    }   
+    
+    .containerBoxRegistroCliente_modelo{
+        width: 25%;
+    }
+}
+    
+    @media (max-width: 900px){
+        .containerBoxRegistroCliente_modelo{
+            display: none;
+        }
+        
+        .containerHeader_logo{
+            display: none;
+        }   
+        
+        .boxRegistroCliente{
+            width: 70%;
+            margin: 30px;
+          }   
+}
+
+@media (max-width: 700px){
+  .boxRegistroCliente{
+    width: 100%;
+    /* margin-top: 0px; */
+    margin: 20px;
+  }
+
+  .containerHeader{
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+

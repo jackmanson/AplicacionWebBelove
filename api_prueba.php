@@ -16,3 +16,22 @@
         "es_agente_de_retencion":null},
     "source":"apiperu.dev"
 }
+
+
+
+{
+    "success":true,
+    "data":{
+        "numero":"44890202",
+        "nombre_completo":"VERGARA MEDRANO,
+         DANIEL ENRIQUE",
+        "nombres":"DANIEL ENRIQUE",
+        "apellido_paterno":"VERGARA",
+        "apellido_materno":"MEDRANO",
+        "codigo_verificacion":7,
+        "direccion":"",
+        "direccion_completa":"",
+        "ubigeo_sunat":"",
+        "ubigeo":["","",""]},
+        "source":"apiperu.dev"
+}
