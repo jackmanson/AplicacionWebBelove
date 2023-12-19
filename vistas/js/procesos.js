@@ -50,7 +50,7 @@ const app = Vue.createApp({
         this.Empleados = '0'
       },
       listaAtencion(){
-        this.title_lista = 'Lista de Atención al Cliente'
+        this.title_lista = 'Lista de Atención al Cliente en Proceso'
         // this.botonCrear = 'Crear'
         this.Citas = '0'
         this.Clientes = '0'

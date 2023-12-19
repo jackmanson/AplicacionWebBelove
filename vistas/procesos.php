@@ -285,7 +285,7 @@
 					<li v-on:click="listaCitas">Citas</li>
 					<li v-on:click="listaClientes">Clientes</li>
 					<li v-on:click="listaAtencion">Lista de Atención</li>
-					<li v-on:click="listaPedidos">Pedidos</li>
+					<li v-on:click="listaPedidos">Orden de Turnos</li>
 					<li v-on:click="listaPromocines">Promociones</li>
 					<li v-on:click="listaDescuentos">Descuentos</li>
 					<li v-on:click="listaCatalogo">Catalógo</li>
