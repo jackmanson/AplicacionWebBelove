@@ -10,7 +10,7 @@ USE `db_belove_modelo_3` ;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Estados` (
   `idEstado` INT NOT NULL AUTO_INCREMENT ,
-  `NombreEstado` VARCHAR(20) NOT NULL ,
+  `NombreEstado` VARCHAR(20) NULL ,
   `DescripcionEstado` VARCHAR(45) NULL ,
   PRIMARY KEY (`idEstado`) )
 ENGINE = InnoDB;
@@ -20,20 +20,13 @@ ENGINE = InnoDB;
 -- Table `db_belove_modelo_3`.`Roles`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Roles` (
-  `idRole` INT NOT NULL AUTO_INCREMENT ,
+  `idRol` INT NOT NULL AUTO_INCREMENT ,
   `NombreRol` VARCHAR(45) NULL ,
   `DescripcionRol` VARCHAR(45) NULL ,
   `FechaCreacion` TIMESTAMP NULL ,
-  `idUsuarioRegistraRol` INT NULL ,
   `idEstadoRol` INT NULL ,
-  PRIMARY KEY (`idRole`) ,
-  INDEX `fkIdUsuarioRegistraRol` (`idUsuarioRegistraRol` ASC) ,
+  PRIMARY KEY (`idRol`) ,
   INDEX `fkIdEstadoRol` (`idEstadoRol` ASC) ,
-  CONSTRAINT `fkIdUsuarioRegistraRol`
-    FOREIGN KEY (`idUsuarioRegistraRol` )
-    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fkIdEstadoRol`
     FOREIGN KEY (`idEstadoRol` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
@@ -47,7 +40,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`TipoIdentificacion` (
   `idTipoDocIdentificacion` INT NOT NULL AUTO_INCREMENT ,
-  `NombreDoc` VARCHAR(20) NOT NULL ,
+  `NombreDoc` VARCHAR(20) NULL ,
   `Descripcion` VARCHAR(250) NULL ,
   PRIMARY KEY (`idTipoDocIdentificacion`) )
 ENGINE = InnoDB;
@@ -58,7 +51,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Sexo` (
   `idSexo` INT NOT NULL AUTO_INCREMENT ,
-  `NombreSexo` VARCHAR(15) NOT NULL ,
+  `NombreSexo` VARCHAR(15) NULL ,
   PRIMARY KEY (`idSexo`) )
 ENGINE = InnoDB;
 
@@ -68,7 +61,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Paises` (
   `idPais` INT NOT NULL AUTO_INCREMENT ,
-  `NombrePais` VARCHAR(45) NOT NULL ,
+  `NombrePais` VARCHAR(45) NULL ,
   `Nacionalidad` VARCHAR(45) NULL ,
   `Idioma` VARCHAR(45) NULL ,
   PRIMARY KEY (`idPais`) ,
@@ -80,8 +73,8 @@ ENGINE = InnoDB;
 -- Table `db_belove_modelo_3`.`Departamentos`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Departamentos` (
-  `Departamento` VARCHAR(20) NULL ,
   `idDepartamentos` INT NOT NULL AUTO_INCREMENT ,
+  `Departamento` VARCHAR(20) NULL ,
   PRIMARY KEY (`idDepartamentos`) )
 ENGINE = InnoDB;
 
@@ -145,6 +138,61 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `db_belove_modelo_3`.`Personas`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Personas` (
+  `idPersona` INT NOT NULL AUTO_INCREMENT ,
+  `idTipoIdentificacion` INT NULL ,
+  `NumIdentificacion` VARCHAR(15) NULL ,
+  `NombrePersona` VARCHAR(45) NULL ,
+  `ApellidoPaterno` VARCHAR(45) NULL ,
+  `ApellidoMaterno` VARCHAR(45) NULL ,
+  `IdSexo` INT NULL ,
+  `IdDireccion` INT NULL ,
+  `FechaNacimiento` DATE NULL ,
+  `FechaRegistra` TIMESTAMP NULL ,
+  `FechaModifica` DATETIME NULL ,
+  PRIMARY KEY (`idPersona`) ,
+  UNIQUE INDEX `NumIdentificacion_UNIQUE` (`NumIdentificacion` ASC) ,
+  INDEX `fkTipoIdentificacion` (`idTipoIdentificacion` ASC) ,
+  INDEX `fkIdSexo` (`IdSexo` ASC) ,
+  INDEX `fkIdDireccion` (`IdDireccion` ASC) ,
+  CONSTRAINT `fkTipoIdentificacion`
+    FOREIGN KEY (`idTipoIdentificacion` )
+    REFERENCES `db_belove_modelo_3`.`TipoIdentificacion` (`idTipoDocIdentificacion` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkIdSexo`
+    FOREIGN KEY (`IdSexo` )
+    REFERENCES `db_belove_modelo_3`.`Sexo` (`idSexo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkIdDireccion`
+    FOREIGN KEY (`IdDireccion` )
+    REFERENCES `db_belove_modelo_3`.`Direcciones` (`idDireccion` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `db_belove_modelo_3`.`CargosEmpleados`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`CargosEmpleados` (
+  `idCargo` INT NOT NULL AUTO_INCREMENT ,
+  `NombreCargo` VARCHAR(45) NULL ,
+  `idEstadoCargo` INT NULL ,
+  PRIMARY KEY (`idCargo`) ,
+  INDEX `fkIdEstadoCargo` (`idEstadoCargo` ASC) ,
+  CONSTRAINT `fkIdEstadoCargo`
+    FOREIGN KEY (`idEstadoCargo` )
+    REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `db_belove_modelo_3`.`Sedes`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Sedes` (
@@ -162,125 +210,41 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_belove_modelo_3`.`Cargos`
+-- Table `db_belove_modelo_3`.`Empleados`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Cargos` (
-  `idCargo` INT NOT NULL AUTO_INCREMENT ,
-  `NombreCargo` VARCHAR(45) NOT NULL ,
-  `idEstadoCargo` INT NOT NULL ,
-  `idUsuarioCreacionCargo` INT NOT NULL ,
-  `FechaCreacionCargo` TIMESTAMP NOT NULL ,
-  `idUsuarioModificaCargo` INT NULL ,
-  `FechaModificaCargo` DATETIME NULL ,
-  PRIMARY KEY (`idCargo`) ,
-  INDEX `fkIdUsuarioCreacionCargo` (`idUsuarioCreacionCargo` ASC) ,
-  INDEX `fkIdUsuarioModificaCargo` (`idUsuarioModificaCargo` ASC) ,
-  INDEX `fkIdEstadoCargo` (`idEstadoCargo` ASC) ,
-  CONSTRAINT `fkIdUsuarioCreacionCargo`
-    FOREIGN KEY (`idUsuarioCreacionCargo` )
-    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioModificaCargo`
-    FOREIGN KEY (`idUsuarioModificaCargo` )
-    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEstadoCargo`
-    FOREIGN KEY (`idEstadoCargo` )
-    REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `db_belove_modelo_3`.`TipoPersona`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`TipoPersona` (
-  `idTipoPersona` INT NOT NULL AUTO_INCREMENT ,
-  `TipoPersona` VARCHAR(45) NOT NULL ,
-  PRIMARY KEY (`idTipoPersona`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `db_belove_modelo_3`.`Personas`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Personas` (
-  `idPersona` INT NOT NULL AUTO_INCREMENT ,
-  `idTipoIdentificacion` INT NOT NULL ,
-  `NumIdentificacion` VARCHAR(15) NOT NULL ,
-  `NombrePersona` VARCHAR(45) NOT NULL ,
-  `ApellidoPaterno` VARCHAR(45) NOT NULL ,
-  `ApellidoMaterno` VARCHAR(45) NOT NULL ,
-  `IdSexo` INT NOT NULL ,
-  `IdDireccion` INT NOT NULL ,
-  `FechaNacimiento` DATE NOT NULL ,
-  `idEstado` INT NOT NULL ,
-  `idTipoPersonal` INT NOT NULL ,
-  `Celular` VARCHAR(20) NOT NULL ,
-  `Email` VARCHAR(45) NOT NULL ,
-  `idSede` INT NOT NULL ,
-  `idCargo` INT NOT NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
-  `FechaRegistra` TIMESTAMP NULL ,
-  `idUsuarioModifica` INT NULL ,
+CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Empleados` (
+  `idEmpleados` INT NOT NULL ,
+  `idPersona` INT NULL ,
+  `idEstado` INT NULL ,
+  `idCargoEmpleado` INT NULL ,
+  `idSede` INT NULL ,
+  `Celular` VARCHAR(25) NULL ,
+  `Email` VARCHAR(45) NULL ,
+  `FechaRegistro` TIMESTAMP NULL ,
   `FechaModifica` DATETIME NULL ,
-  PRIMARY KEY (`idPersona`) ,
-  UNIQUE INDEX `NumIdentificacion_UNIQUE` (`NumIdentificacion` ASC) ,
-  INDEX `fkTipoIdentificacion` (`idTipoIdentificacion` ASC) ,
-  INDEX `fkEstado` (`idEstado` ASC) ,
-  INDEX `fkIdSexo` (`IdSexo` ASC) ,
-  INDEX `fkIdDireccion` (`IdDireccion` ASC) ,
-  INDEX `fkIdSedePertenece` (`idSede` ASC) ,
-  INDEX `fkIdCargo` (`idCargo` ASC) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  INDEX `fkIdUsuarioModifica` (`idUsuarioModifica` ASC) ,
-  INDEX `fkIdTipoPersona` (`idTipoPersonal` ASC) ,
-  CONSTRAINT `fkTipoIdentificacion`
-    FOREIGN KEY (`idTipoIdentificacion` )
-    REFERENCES `db_belove_modelo_3`.`TipoIdentificacion` (`idTipoDocIdentificacion` )
+  PRIMARY KEY (`idEmpleados`) ,
+  INDEX `fkIdPersona` (`idPersona` ASC) ,
+  INDEX `fkIdEstado` (`idEstado` ASC) ,
+  INDEX `fkIdCargoEmpleado` (`idCargoEmpleado` ASC) ,
+  INDEX `fkIdSede` (`idSede` ASC) ,
+  CONSTRAINT `fkIdPersona`
+    FOREIGN KEY (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkEstado`
+  CONSTRAINT `fkIdEstado`
     FOREIGN KEY (`idEstado` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdSexo`
-    FOREIGN KEY (`IdSexo` )
-    REFERENCES `db_belove_modelo_3`.`Sexo` (`idSexo` )
+  CONSTRAINT `fkIdCargoEmpleado`
+    FOREIGN KEY (`idCargoEmpleado` )
+    REFERENCES `db_belove_modelo_3`.`CargosEmpleados` (`idCargo` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdDireccion`
-    FOREIGN KEY (`IdDireccion` )
-    REFERENCES `db_belove_modelo_3`.`Direcciones` (`idDireccion` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdSedePertenece`
+  CONSTRAINT `fkIdSede`
     FOREIGN KEY (`idSede` )
     REFERENCES `db_belove_modelo_3`.`Sedes` (`idSede` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdCargo`
-    FOREIGN KEY (`idCargo` )
-    REFERENCES `db_belove_modelo_3`.`Cargos` (`idCargo` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioRegistra`
-    FOREIGN KEY (`idUsuarioRegistra` )
-    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioModifica`
-    FOREIGN KEY (`idUsuarioModifica` )
-    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdTipoPersona`
-    FOREIGN KEY (`idTipoPersonal` )
-    REFERENCES `db_belove_modelo_3`.`TipoPersona` (`idTipoPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -291,20 +255,21 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Usuarios` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT ,
-  `idEmpleado` INT NOT NULL ,
-  `Email` VARCHAR(45) NOT NULL ,
-  `pass` VARCHAR(200) NOT NULL ,
-  `idRol` INT NOT NULL ,
-  `FechaAlta` TIMESTAMP NOT NULL ,
+  `idEmpleado` INT NULL ,
+  `Email` VARCHAR(45) NULL ,
+  `pass` VARCHAR(200) NULL ,
+  `idRolUsuario` INT NULL ,
+  `FechaAlta` TIMESTAMP NULL ,
   `FechaBaja` DATETIME NULL ,
   `idEstadoUsuario` INT NULL ,
   PRIMARY KEY (`idUsuario`) ,
-  INDEX `fkRol` (`idRol` ASC) ,
+  INDEX `fkRolUsuario` (`idRolUsuario` ASC) ,
   INDEX `fkEstadoUsuario` (`idEstadoUsuario` ASC) ,
-  INDEX `fkEmpleado` (`idEmpleado` ASC) ,
-  CONSTRAINT `fkRol`
-    FOREIGN KEY (`idRol` )
-    REFERENCES `db_belove_modelo_3`.`Roles` (`idRole` )
+  INDEX `fkEmpleado1` (`idEmpleado` ASC) ,
+  UNIQUE INDEX `Email_UNIQUE` (`Email` ASC) ,
+  CONSTRAINT `fkRolUsuario`
+    FOREIGN KEY (`idRolUsuario` )
+    REFERENCES `db_belove_modelo_3`.`Roles` (`idRol` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fkEstadoUsuario`
@@ -312,9 +277,9 @@ CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Usuarios` (
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkEmpleado`
+  CONSTRAINT `fkEmpleado1`
     FOREIGN KEY (`idEmpleado` )
-    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Empleados` (`idEmpleados` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -325,31 +290,63 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Productos` (
   `idProducto` INT NOT NULL AUTO_INCREMENT ,
-  `NombreProducto` VARCHAR(45) NOT NULL ,
-  `CantidadStock` DECIMAL(2) NOT NULL ,
-  `PrecioProducto` DECIMAL(2) NOT NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `NombreProducto` VARCHAR(45) NULL ,
+  `CantidadStock` DECIMAL(2) NULL ,
+  `PrecioProducto` DECIMAL(2) NULL ,
+  `idUsuarioRegistra` INT NULL ,
   `FechaRegistra` TIMESTAMP NULL ,
   `idUsuarioModifica` INT NULL ,
   `FechaModifica` DATETIME NULL ,
-  `idEstadoProducto` INT NOT NULL ,
+  `idEstadoProducto` INT NULL ,
   PRIMARY KEY (`idProducto`) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  INDEX `fkIdUsuarioModifica` (`idUsuarioModifica` ASC) ,
-  INDEX `fkIdEstado` (`idEstadoProducto` ASC) ,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  INDEX `fkIdUsuarioRegistraP` (`idUsuarioRegistra` ASC) ,
+  INDEX `fkIdUsuarioModificaP` (`idUsuarioModifica` ASC) ,
+  INDEX `fkIdEstadoP` (`idEstadoProducto` ASC) ,
+  CONSTRAINT `fkIdUsuarioRegistraP`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioModifica`
+  CONSTRAINT `fkIdUsuarioModificaP`
     FOREIGN KEY (`idUsuarioModifica` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEstado`
+  CONSTRAINT `fkIdEstadoP`
     FOREIGN KEY (`idEstadoProducto` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `db_belove_modelo_3`.`Clientes`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Clientes` (
+  `idClientes` INT NOT NULL AUTO_INCREMENT ,
+  `idPersona` INT NULL ,
+  `Celular` VARCHAR(25) NULL ,
+  `idEstado` INT NULL ,
+  `idUsuarioRegistra` INT NULL ,
+  `FechaUsuarioRegistra` TIMESTAMP NULL ,
+  PRIMARY KEY (`idClientes`) ,
+  INDEX `fkIdPersonaC` (`idPersona` ASC) ,
+  INDEX `fkIdEstadoC` (`idEstado` ASC) ,
+  INDEX `fkIdUsuarioRegistraC` (`idUsuarioRegistra` ASC) ,
+  CONSTRAINT `fkIdPersonaC`
+    FOREIGN KEY (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkIdEstadoC`
+    FOREIGN KEY (`idEstado` )
+    REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkIdUsuarioRegistraC`
+    FOREIGN KEY (`idUsuarioRegistra` )
+    REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -360,35 +357,35 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`VentasProductosClientes` (
   `idVentaProducto` INT NOT NULL AUTO_INCREMENT ,
-  `idProducto` INT NOT NULL ,
-  `idCliente` INT NOT NULL ,
-  `CantidadProducto` DECIMAL(2) NOT NULL ,
-  `PrecioUnitario` DECIMAL(2) NOT NULL ,
+  `idProducto` INT NULL ,
+  `idCliente` INT NULL ,
+  `CantidadProducto` DECIMAL(2) NULL ,
+  `PrecioUnitario` DECIMAL(2) NULL ,
   `PrecioTotal` DECIMAL(2) NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `idUsuarioRegistra` INT NULL ,
   `FechaRegistro` TIMESTAMP NULL ,
-  `idEstadoCompra` INT NOT NULL ,
+  `idEstadoCompra` INT NULL ,
   PRIMARY KEY (`idVentaProducto`) ,
-  INDEX `fkEstadoCompra` (`idEstadoCompra` ASC) ,
-  INDEX `fkIdProducto` (`idProducto` ASC) ,
-  INDEX `fkIdCliente` (`idCliente` ASC) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  CONSTRAINT `fkEstadoCompra`
+  INDEX `fkEstadoCompraVPC` (`idEstadoCompra` ASC) ,
+  INDEX `fkIdProductoVPC` (`idProducto` ASC) ,
+  INDEX `fkIdClienteVPC` (`idCliente` ASC) ,
+  INDEX `fkIdUsuarioRegistraVPC` (`idUsuarioRegistra` ASC) ,
+  CONSTRAINT `fkEstadoCompraVPC`
     FOREIGN KEY (`idEstadoCompra` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdProducto`
+  CONSTRAINT `fkIdProductoVPC`
     FOREIGN KEY (`idProducto` )
     REFERENCES `db_belove_modelo_3`.`Productos` (`idProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdCliente`
+  CONSTRAINT `fkIdClienteVPC`
     FOREIGN KEY (`idCliente` )
-    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Clientes` (`idClientes` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  CONSTRAINT `fkIdUsuarioRegistraVPC`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
@@ -401,22 +398,22 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`TiposServicios` (
   `idTipoServicio` INT NOT NULL AUTO_INCREMENT ,
-  `NombreServicio` VARCHAR(45) NOT NULL ,
+  `NombreServicio` VARCHAR(45) NULL ,
   `PrecioServicioBase` DECIMAL(2) NULL ,
   `DescripcionServicio` VARCHAR(100) NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `idUsuarioRegistra` INT NULL ,
   `FechaRegistro` TIMESTAMP NULL ,
   `idUsuarioModifica` INT NULL ,
   `FechaModifica` DATETIME NULL ,
   PRIMARY KEY (`idTipoServicio`) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  INDEX `fkIdUsuarioModifica` (`idUsuarioModifica` ASC) ,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  INDEX `fkIdUsuarioRegistraTS` (`idUsuarioRegistra` ASC) ,
+  INDEX `fkIdUsuarioModificaTS` (`idUsuarioModifica` ASC) ,
+  CONSTRAINT `fkIdUsuarioRegistraTS`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioModifica`
+  CONSTRAINT `fkIdUsuarioModificaTS`
     FOREIGN KEY (`idUsuarioModifica` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
@@ -435,93 +432,63 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `db_belove_modelo_3`.`EmpleadoEspecialidad`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`EmpleadoEspecialidad` (
-  `idEmpleadoEspecialidad` INT NOT NULL AUTO_INCREMENT ,
-  `idEmpleado` INT NOT NULL ,
-  `idCargo` INT NOT NULL ,
-  `idTipoServicio` INT NOT NULL ,
-  PRIMARY KEY (`idEmpleadoEspecialidad`) ,
-  INDEX `fkIdeCargo` (`idCargo` ASC) ,
-  INDEX `fkIdTipoServicio` (`idTipoServicio` ASC) ,
-  INDEX `fkIdEmpleado` (`idEmpleado` ASC) ,
-  CONSTRAINT `fkIdeCargo`
-    FOREIGN KEY (`idCargo` )
-    REFERENCES `db_belove_modelo_3`.`Cargos` (`idCargo` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdTipoServicio`
-    FOREIGN KEY (`idTipoServicio` )
-    REFERENCES `db_belove_modelo_3`.`TiposServicios` (`idTipoServicio` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEmpleado`
-    FOREIGN KEY (`idEmpleado` )
-    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `db_belove_modelo_3`.`ReservasServicios`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`ReservasServicios` (
   `idReservaServicio` INT NOT NULL AUTO_INCREMENT ,
-  `idCliente` INT NOT NULL ,
-  `idTipoReserva` INT NOT NULL ,
-  `idTipoServicio` INT NOT NULL ,
-  `idEmpleadoOperaServicio` INT NOT NULL ,
-  `CelularParaCita` VARCHAR(20) NOT NULL ,
-  `Precio` DECIMAL(2) NOT NULL ,
-  `FechaReserva` DATETIME NOT NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `idCliente` INT NULL ,
+  `idTipoReserva` INT NULL ,
+  `idTipoServicio` INT NULL ,
+  `idEmpleadoOperaServicio` INT NULL ,
+  `CelularClienteCita` VARCHAR(20) NULL ,
+  `Precio` DECIMAL(2) NULL ,
+  `FechaReserva` DATETIME NULL ,
+  `idUsuarioRegistra` INT NULL ,
   `FechaRegistra` TIMESTAMP NULL ,
   `idUsuarioModifica` INT NULL ,
   `FechaModifica` DATETIME NULL ,
-  `idEstadoReserva` INT NOT NULL ,
+  `idEstadoReserva` INT NULL ,
   PRIMARY KEY (`idReservaServicio`) ,
-  INDEX `fkIdTipoReserva` (`idTipoReserva` ASC) ,
-  INDEX `fkIdTipoServicio` (`idTipoServicio` ASC) ,
-  INDEX `fkIdEmpleadoOpera` (`idEmpleadoOperaServicio` ASC) ,
-  INDEX `fkIdEstadoReserva` (`idEstadoReserva` ASC) ,
-  INDEX `fkIdCliente` (`idCliente` ASC) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  INDEX `fkIdUsuarioModifica` (`idUsuarioModifica` ASC) ,
-  CONSTRAINT `fkIdTipoReserva`
+  INDEX `fkIdTipoReservaRS` (`idTipoReserva` ASC) ,
+  INDEX `fkIdTipoServicioRS` (`idTipoServicio` ASC) ,
+  INDEX `fkIdEstadoReservaRS` (`idEstadoReserva` ASC) ,
+  INDEX `fkIdClienteRS` (`idCliente` ASC) ,
+  INDEX `fkIdUsuarioRegistraRS` (`idUsuarioRegistra` ASC) ,
+  INDEX `fkIdUsuarioModificaRS` (`idUsuarioModifica` ASC) ,
+  INDEX `fkIdEmpleadoOperaRS` (`idEmpleadoOperaServicio` ASC) ,
+  CONSTRAINT `fkIdTipoReservaRS`
     FOREIGN KEY (`idTipoReserva` )
     REFERENCES `db_belove_modelo_3`.`TiposReservas` (`idTipoReserva` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdTipoServicio`
+  CONSTRAINT `fkIdTipoServicioRS`
     FOREIGN KEY (`idTipoServicio` )
     REFERENCES `db_belove_modelo_3`.`TiposServicios` (`idTipoServicio` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEmpleadoOpera`
-    FOREIGN KEY (`idEmpleadoOperaServicio` )
-    REFERENCES `db_belove_modelo_3`.`EmpleadoEspecialidad` (`idEmpleadoEspecialidad` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEstadoReserva`
+  CONSTRAINT `fkIdEstadoReservaRS`
     FOREIGN KEY (`idEstadoReserva` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdCliente`
+  CONSTRAINT `fkIdClienteRS`
     FOREIGN KEY (`idCliente` )
-    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Clientes` (`idClientes` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  CONSTRAINT `fkIdUsuarioRegistraRS`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioModifica`
+  CONSTRAINT `fkIdUsuarioModificaRS`
     FOREIGN KEY (`idUsuarioModifica` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fkIdEmpleadoOperaRS`
+    FOREIGN KEY (`idEmpleadoOperaServicio` )
+    REFERENCES `db_belove_modelo_3`.`Empleados` (`idEmpleados` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -535,22 +502,22 @@ CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`VentasGeneralesClientes` (
   `idReservaServicio` INT NULL ,
   `idVentaProductoCliente` INT NULL ,
   `FechaRegistro` TIMESTAMP NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `idUsuarioRegistra` INT NULL ,
   PRIMARY KEY (`idCompra`) ,
-  INDEX `fkIdReservaServicio` (`idReservaServicio` ASC) ,
-  INDEX `fkIdVentaProductoCliente` (`idVentaProductoCliente` ASC) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  CONSTRAINT `fkIdReservaServicio`
+  INDEX `fkIdReservaServicioVGC` (`idReservaServicio` ASC) ,
+  INDEX `fkIdVentaProductoClienteVGC` (`idVentaProductoCliente` ASC) ,
+  INDEX `fkIdUsuarioRegistraVGC` (`idUsuarioRegistra` ASC) ,
+  CONSTRAINT `fkIdReservaServicioVGC`
     FOREIGN KEY (`idReservaServicio` )
     REFERENCES `db_belove_modelo_3`.`ReservasServicios` (`idReservaServicio` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdVentaProductoCliente`
+  CONSTRAINT `fkIdVentaProductoClienteVGC`
     FOREIGN KEY (`idVentaProductoCliente` )
     REFERENCES `db_belove_modelo_3`.`VentasProductosClientes` (`idVentaProducto` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  CONSTRAINT `fkIdUsuarioRegistraVGC`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
@@ -563,22 +530,22 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`HorarioEmpleados` (
   `idHorarioEmpleado` INT NOT NULL AUTO_INCREMENT ,
-  `idEmpleado` INT NOT NULL ,
+  `idEmpleado` INT NULL ,
   `Dia` VARCHAR(10) NULL ,
   `HoraIngreso` TIME NULL ,
   `HoraSalida` TIME NULL ,
   `FechaQueAsiste` DATE NULL ,
-  `idUsuarioRegistra` INT NOT NULL ,
+  `idUsuarioRegistra` INT NULL ,
   `FechaUsuarioRegistra` TIMESTAMP NULL ,
   PRIMARY KEY (`idHorarioEmpleado`) ,
-  INDEX `fkIdEmpleado` (`idEmpleado` ASC) ,
-  INDEX `fkIdUsuarioRegistra` (`idUsuarioRegistra` ASC) ,
-  CONSTRAINT `fkIdEmpleado`
+  INDEX `fkIdEmpleado1` (`idEmpleado` ASC) ,
+  INDEX `fkIdUsuarioRegistraHE` (`idUsuarioRegistra` ASC) ,
+  CONSTRAINT `fkIdEmpleado1`
     FOREIGN KEY (`idEmpleado` )
     REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioRegistra`
+  CONSTRAINT `fkIdUsuarioRegistraHE`
     FOREIGN KEY (`idUsuarioRegistra` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
@@ -591,27 +558,27 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`OrdenTurnosAtencion` (
   `idOrdenTurnoAtencion` INT NOT NULL AUTO_INCREMENT ,
-  `idHorarioEmpleado` INT NOT NULL ,
-  `OrdenTurnoAtencion` INT NOT NULL ,
-  `HoraAsignacionCliente` TIME NOT NULL ,
-  `FechaAsignacionCliente` DATE NOT NULL ,
-  `idUsuarioAsignaCliente` INT NOT NULL ,
-  `idEstado` INT NOT NULL ,
+  `idHorarioEmpleado` INT NULL ,
+  `OrdenTurnoAtencion` INT NULL ,
+  `HoraAsignacionCliente` TIME NULL ,
+  `FechaAsignacionCliente` DATE NULL ,
+  `idUsuarioAsignaCliente` INT NULL ,
+  `idEstado` INT NULL ,
   PRIMARY KEY (`idOrdenTurnoAtencion`) ,
-  INDEX `fkIdHorarioEmpleado` (`idHorarioEmpleado` ASC) ,
-  INDEX `fkIdEstado` (`idEstado` ASC) ,
-  INDEX `fkIdUsuarioAsignaCliente` (`idUsuarioAsignaCliente` ASC) ,
-  CONSTRAINT `fkIdHorarioEmpleado`
+  INDEX `fkIdHorarioEmpleadoOTA` (`idHorarioEmpleado` ASC) ,
+  INDEX `fkIdEstadoOTA` (`idEstado` ASC) ,
+  INDEX `fkIdUsuarioAsignaClienteOTA` (`idUsuarioAsignaCliente` ASC) ,
+  CONSTRAINT `fkIdHorarioEmpleadoOTA`
     FOREIGN KEY (`idHorarioEmpleado` )
     REFERENCES `db_belove_modelo_3`.`HorarioEmpleados` (`idHorarioEmpleado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdEstado`
+  CONSTRAINT `fkIdEstadoOTA`
     FOREIGN KEY (`idEstado` )
     REFERENCES `db_belove_modelo_3`.`Estados` (`idEstado` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fkIdUsuarioAsignaCliente`
+  CONSTRAINT `fkIdUsuarioAsignaClienteOTA`
     FOREIGN KEY (`idUsuarioAsignaCliente` )
     REFERENCES `db_belove_modelo_3`.`Usuarios` (`idUsuario` )
     ON DELETE NO ACTION
