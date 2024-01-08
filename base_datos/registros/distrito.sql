@@ -38,7 +38,7 @@ CREATE TABLE `distrito` (
 -- Volcado de datos para la tabla `distrito`
 --
 
-INSERT INTO `distrito` (`id_distrito`, `nombre_distrito`, `fk_id_provincia_1`) VALUES
+INSERT INTO `distritos` (`idDistrito`, `NombreDistrito`, `idProvincia`) VALUES
 (1, 'Asunción', 1),
 (2, 'Balsas', 1),
 (3, 'Chachapoyas', 1),

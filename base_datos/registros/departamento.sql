@@ -37,32 +37,32 @@ CREATE TABLE `departamento` (
 -- Volcado de datos para la tabla `departamento`
 --
 
-INSERT INTO `departamento` (`id_departamento`, `nombre_departamento`) VALUES
-(1, 'Amazonas'),
-(2, 'Áncash'),
-(3, 'Apurímac'),
-(4, 'Arequipa'),
-(5, 'Ayacucho'),
-(6, 'Cajamarca'),
-(7, 'Cusco'),
-(8, 'Huancavelica'),
-(9, 'Huánuco'),
-(10, 'Ica'),
-(11, 'Junín'),
-(12, 'La Libertad'),
-(13, 'Lambayeque'),
-(14, 'Lima'),
-(15, 'Loreto'),
-(16, 'Madre de Dios'),
-(17, 'Moquegua'),
-(18, 'Pasco'),
-(19, 'Piura'),
-(20, 'Puno'),
-(21, 'San Martín'),
-(22, 'Tacna'),
-(23, 'Tumbes'),
-(24, 'Ucayali'),
-(25, 'Provincia Constitucional del Callao');
+INSERT INTO `departamentos` (`idDepartamentos`, `Departamento`,`idPaies`) VALUES
+(1, 'Amazonas',140),
+(2, 'Áncash',140),
+(3, 'Apurímac',140),
+(4, 'Arequipa',140),
+(5, 'Ayacucho',140),
+(6, 'Cajamarca',140),
+(7, 'Cusco',140),
+(8, 'Huancavelica',140),
+(9, 'Huánuco',140),
+(10, 'Ica',140),
+(11, 'Junín',140),
+(12, 'La Libertad',140),
+(13, 'Lambayeque',140),
+(14, 'Lima',140),
+(15, 'Loreto',140),
+(16, 'Madre de Dios',140),
+(17, 'Moquegua',140),
+(18, 'Pasco',140),
+(19, 'Piura',140),
+(20, 'Puno',140),
+(21, 'San Martín',140),
+(22, 'Tacna',140),
+(23, 'Tumbes',140),
+(24, 'Ucayali',140),
+(25, 'Provincia Constitucional del Callao',140);
 
 --
 -- Índices para tablas volcadas
