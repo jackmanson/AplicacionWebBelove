@@ -75,7 +75,14 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Departamentos` (
   `idDepartamentos` INT NOT NULL AUTO_INCREMENT ,
   `Departamento` VARCHAR(20) NULL ,
-  PRIMARY KEY (`idDepartamentos`) )
+  `idPaies` INT NULL ,
+  PRIMARY KEY (`idDepartamentos`) ,
+  INDEX `fkIdPais_1` (`idPaies` ASC) ,
+  CONSTRAINT `fkIdPais_1`
+    FOREIGN KEY (`idPaies` )
+    REFERENCES `db_belove_modelo_3`.`Paises` (`idPais` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -85,7 +92,14 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Provincias` (
   `idProvincia` INT NOT NULL AUTO_INCREMENT ,
   `NombreProvincia` VARCHAR(30) NULL ,
-  PRIMARY KEY (`idProvincia`) )
+  `idDepartamento` INT NULL ,
+  PRIMARY KEY (`idProvincia`) ,
+  INDEX `fkIdDepartamento_Pro` (`idDepartamento` ASC) ,
+  CONSTRAINT `fkIdDepartamento_Pro`
+    FOREIGN KEY (`idDepartamento` )
+    REFERENCES `db_belove_modelo_3`.`Departamentos` (`idDepartamentos` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -95,7 +109,14 @@ ENGINE = InnoDB;
 CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Distritos` (
   `idDistrito` INT NOT NULL AUTO_INCREMENT ,
   `NombreDistrito` VARCHAR(30) NULL ,
-  PRIMARY KEY (`idDistrito`) )
+  `idProvincia` INT NULL ,
+  PRIMARY KEY (`idDistrito`) ,
+  INDEX `fkIdProvincia_Dis` (`idProvincia` ASC) ,
+  CONSTRAINT `fkIdProvincia_Dis`
+    FOREIGN KEY (`idProvincia` )
+    REFERENCES `db_belove_modelo_3`.`Provincias` (`idProvincia` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -151,7 +172,6 @@ CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`Personas` (
   `IdDireccion` INT NULL ,
   `FechaNacimiento` DATE NULL ,
   `FechaRegistra` TIMESTAMP NULL ,
-  `FechaModifica` DATETIME NULL ,
   PRIMARY KEY (`idPersona`) ,
   UNIQUE INDEX `NumIdentificacion_UNIQUE` (`NumIdentificacion` ASC) ,
   INDEX `fkTipoIdentificacion` (`idTipoIdentificacion` ASC) ,
@@ -542,7 +562,7 @@ CREATE  TABLE IF NOT EXISTS `db_belove_modelo_3`.`HorarioEmpleados` (
   INDEX `fkIdUsuarioRegistraHE` (`idUsuarioRegistra` ASC) ,
   CONSTRAINT `fkIdEmpleado1`
     FOREIGN KEY (`idEmpleado` )
-    REFERENCES `db_belove_modelo_3`.`Personas` (`idPersona` )
+    REFERENCES `db_belove_modelo_3`.`Empleados` (`idEmpleados` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fkIdUsuarioRegistraHE`
