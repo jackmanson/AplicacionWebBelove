@@ -63,11 +63,11 @@
 				</section>
 				<section class="containerLista_registros" v-if="Citas == 1">
 						<?php 
-							require_once "controladores/controlador.procesos.php";     
-							require_once "modelos/procesos.modelos.php";
+							// require_once "controladores/controlador.procesos.php";     
+							// require_once "modelos/procesos.modelos.php";
 					
-							$listaCitas = new ControladorProcesos();
-							$listaCitas -> controlListaCitas();
+							// $listaCitas = new ControladorProcesos();
+							// $listaCitas -> controlListaCitas();
 						?>
 				</section>
 
@@ -76,6 +76,8 @@
 					<div class="containerLista_filaClientes">
 						<p class="containerLista_item containerLista-head">ID</p>
 						<p class="containerLista_item containerLista-head">NOMBRE</p>
+						<p class="containerLista_item containerLista-head">APELLIDO PATERNO</p>
+						<p class="containerLista_item containerLista-head">APELLIDO MATERNO</p>
 						<p class="containerLista_item containerLista-head">CELULAR</p>
 						<p class="containerLista_item containerLista-head">CUMPLEAÑOS</p>
 						<p class="containerLista_item containerLista-head">COLABORADOR QUE REGISTRO</p>
@@ -171,16 +173,25 @@
 				<!-- LISTA DE PRODUCTOS -->
 				<section class="containerLista_registros" v-if="Productos == 1">
 					<div class="containerLista_filaProductos">
-						<p class="containerLista_item">BE000123M</p>
-						<p class="containerLista_item-genero"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Dama</p>
-						<p class="containerLista_item">Servicio Cosmético</p>
-						<p class="containerLista_item-estado"><i class="fa fa-square" aria-hidden="true"></i>&nbsp;Pendiente</p>
-						<p class="containerLista_item">12:00 pm</p>
-						<p class="containerLista_item">15/09/2023</p>
-						<p class="containerLista_item">1</p>
-						<p class="containerLista_item">Pagado</p>
-						<p class="containerLista_item"><i class="fa fa-trash" aria-hidden="true"></i></p>
+						<p class="containerLista_item containerLista-head">ID</p>
+						<p class="containerLista_item containerLista-head">PRODUCTO</p>
+						<p class="containerLista_item containerLista-head">STOCK</p>
+						<p class="containerLista_item containerLista-head">PRECIO</p>
+						<p class="containerLista_item containerLista-head">ESTADO</p>
+						<p class="containerLista_item containerLista-head">USUARIO REGISTRA</p>
+						<p class="containerLista_item containerLista-head">FECHA REGISTRO</p>
+						<p class="containerLista_item containerLista-head"><a href="registro.php"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></p>
 					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Productos == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+
+							$listaProductos = new ControladorProcesos();
+							$listaProductos -> controlListaProductos();
+					
+						?>
 				</section>
 				
 				<!-- LISTA DE SERVICIOS -->
@@ -198,8 +209,8 @@
 							require_once "controladores/controlador.procesos.php";     
 							require_once "modelos/procesos.modelos.php";
 
-							$listaEmpleados = new ControladorProcesos();
-							$listaEmpleados -> controlListaServicios();
+							$listaServicios = new ControladorProcesos();
+							$listaServicios -> controlListaServicios();
 						?>
 				</section>
 
@@ -207,9 +218,12 @@
 				<section class="containerLista_registros" v-if="Empleados == 1">
 					<div class="containerLista_filaEmpleados">
 						<p class="containerLista_item containerLista-head">ID</p>
-						<p class="containerLista_item containerLista-head">NOMBRE</p>
+						<p class="containerLista_item containerLista-head">NOMBRES</p>
+						<p class="containerLista_item containerLista-head">APELLIDO PATERNO</p>
+						<p class="containerLista_item containerLista-head">APELLIDO MATERNO</p>
 						<p class="containerLista_item containerLista-head">EMAIL</p>
 						<p class="containerLista_item containerLista-head">CARGO</p>
+						<p class="containerLista_item containerLista-head">ESTADO</p>
 						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
 					</div>
 				</section>
@@ -223,7 +237,209 @@
 						?>
 				</section>
 
-				<!-- BOTON DE CREAR CITA -->
+				<!-- LISTA DE HORARIOS ESTILISTAS  -->
+				<section class="containerLista_registros" v-if="Horarios == 1">
+					<h1 class="containerLista_title">Estilistas</h1>
+					<div class="containerLista_filaHorarios">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Horarios == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHorariosEstilista = new ControladorProcesos();
+							$listaHorariosEstilista -> controlListaHorariosEstilista();
+						?>
+				</section>
+
+				<!-- LISTA DE HORARIOS BARBEROS  -->
+				<section class="containerLista_registros" v-if="Horarios == 1">
+					<h1 class="containerLista_title">Barberos</h1>
+					<div class="containerLista_filaHorarios">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Horarios == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHorariosBarbero = new ControladorProcesos();
+							$listaHorariosBarbero -> controlListaHorariosBarbero();
+						?>
+				</section>
+
+				<!-- LISTA DE HORARIOS COSMIATRAS Y MANICURISTAS  -->
+				<section class="containerLista_registros" v-if="Horarios == 1">
+					<h1 class="containerLista_title">Cosmiatras y Manicuristas</h1>
+					<div class="containerLista_filaHorarios">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Horarios == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHoraiosManicurista = new ControladorProcesos();
+							$listaHoraiosManicurista -> controlListaHorariosManicurista();
+						?>
+				</section>
+
+				<!-- LISTA DE HORARIOS ADMINISTRADORA Y CAJERA  -->
+				<section class="containerLista_registros" v-if="Horarios == 1">
+					<h1 class="containerLista_title">Administradora y Cajera</h1>
+					<div class="containerLista_filaHorarios">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Horarios == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHorariosAdminCajero = new ControladorProcesos();
+							$listaHorariosAdminCajero -> controlListaHorariosAdminCajero();
+						?>
+				</section>
+
+				<!-- LISTA DE HORARIOS MANTENIMIENTO  -->
+				<section class="containerLista_registros" v-if="Horarios == 1">
+					<h1 class="containerLista_title">Mantenimiento</h1>
+					<div class="containerLista_filaHorarios">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Horarios == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHorariosMantenimiento = new ControladorProcesos();
+							$listaHorariosMantenimiento -> controlListaHorariosMantenimiento();
+						?>
+				</section>
+
+				<!-- TAREAS ASIGNADAS - LIMPIEZA DE VITRINAS  -->
+				<section class="containerLista_registros" v-if="Tareas == 1">
+					<h1 class="containerLista_title">Limpieza de Vitrinas</h1>
+					<div class="containerLista_filaTareasAsignadas">
+						<p class="containerLista_item containerLista-head">VITRINAS</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Tareas == 1">
+						<?php 
+							require_once "controladores/controlador.procesos.php";     
+							require_once "modelos/procesos.modelos.php";
+					
+							$listaHorariosLimpiezaVitrina = new ControladorProcesos();
+							$listaHorariosLimpiezaVitrina -> controlListaHorariosLimpiezaVitrina();
+						?>
+				</section>
+
+				<!-- TAREAS ASIGNADAS - NISHMAN Y CREW  -->
+				<section class="containerLista_registros" v-if="Tareas == 1">
+					<h1 class="containerLista_title">Limpieza Nishman y Crew</h1>
+					<div class="containerLista_filaTareasAsignadas">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Tareas == 1">
+						<?php 
+							// require_once "controladores/controlador.procesos.php";     
+							// require_once "modelos/procesos.modelos.php";
+					
+							// $listaEmpleados = new ControladorProcesos();
+							// $listaEmpleados -> controlListaEmpleados();
+						?>
+				</section>
+
+				<!-- TAREAS ASIGNADAS - OPI  -->
+				<section class="containerLista_registros" v-if="Tareas == 1">
+					<h1 class="containerLista_title">Limpieza Opi</h1>
+					<div class="containerLista_filaTareasAsignadas">
+						<p class="containerLista_item containerLista-head">COLABORADOR</p>
+						<p class="containerLista_item containerLista-head">LUNES</p>
+						<p class="containerLista_item containerLista-head">MARTES</p>
+						<p class="containerLista_item containerLista-head">MIERCOLES</p>
+						<p class="containerLista_item containerLista-head">JUEVES</p>
+						<p class="containerLista_item containerLista-head">VIERNES</p>
+						<p class="containerLista_item containerLista-head">SABADO</p>
+						<p class="containerLista_item containerLista-head">DOMINGO</p>
+						<p class="containerLista_item containerLista-head"><i class="fa fa-plus-circle" aria-hidden="true"></i></p>
+					</div>
+				</section>
+				<section class="containerLista_registros" v-if="Tareas == 1">
+						<?php 
+							// require_once "controladores/controlador.procesos.php";     
+							// require_once "modelos/procesos.modelos.php";
+					
+							// $listaEmpleados = new ControladorProcesos();
+							// $listaEmpleados -> controlListaEmpleados();
+						?>
+						<p>*MANTENER LIMPIA SUS VITRINAS CORRESPONDIENTES EN LOS HORARIOS ESTABLECIDOS CASO CONTRARIO SE MULTARÁ CON S/10.</p>
+				</section>
+
+
+				<!-- BOTON DE CREAR  -->
 				<a href=""><button class="containerLista_buttonAG" v-if="Citas == 1">{{ botonCrear }}</button></a>
 				<a href="registro.php"><button class="containerLista_buttonAG" v-if="Clientes == 1">{{ botonCrear }}</button></a>
 				<a href=""><button class="containerLista_buttonAG" v-if="Atencion == 1">{{ botonCrear }}</button></a>
@@ -234,6 +450,8 @@
 				<a href=""><button class="containerLista_buttonAG" v-if="Productos == 1">{{ botonCrear }}</button></a>
 				<a href=""><button class="containerLista_buttonAG" v-if="Servicios == 1">{{ botonCrear }}</button></a>
 				<a href=""><button class="containerLista_buttonAG" v-if="Empleados == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Horarios == 1">{{ botonCrear }}</button></a>
+				<a href=""><button class="containerLista_buttonAG" v-if="Tareas == 1">{{ botonCrear }}</button></a>
 			</section>
 
 			<!-- SECTION DE FOTTER -->
@@ -282,16 +500,18 @@
 				<p class="containerMenu_nomUser">Juliana Angers</p>
 			
 				<ul>
-					<li v-on:click="listaCitas">Citas</li>
-					<li v-on:click="listaClientes">Clientes</li>
-					<li v-on:click="listaAtencion">Lista de Atención</li>
-					<li v-on:click="listaPedidos">Orden de Turnos</li>
-					<li v-on:click="listaPromocines">Promociones</li>
-					<li v-on:click="listaDescuentos">Descuentos</li>
-					<li v-on:click="listaCatalogo">Catalógo</li>
-					<li v-on:click="listaProductos">Productos</li>
-					<li v-on:click="listaServicios">Servicios</li>
-					<li v-on:click="listaEmpleados">Empleados</li>
+					<li id="itemCitas" v-on:click="listaCitas">Citas</li>
+					<li id="itemClientes" v-on:click="listaClientes">Clientes</li>
+					<li id="itemAtencion" v-on:click="listaAtencion">Lista de Atención</li>
+					<li id="itemPedidos" v-on:click="listaPedidos">Orden de Turnos</li>
+					<li id="itemPromo" v-on:click="listaPromocines">Promociones</li>
+					<li id="itemDesc" v-on:click="listaDescuentos">Descuentos</li>
+					<li id="itemCata" v-on:click="listaCatalogo">Catalógo</li>
+					<li id="itemProduc" v-on:click="listaProductos">Productos</li>
+					<li id="itemServi" v-on:click="listaServicios">Servicios</li>
+					<li id="itemEmplea" v-on:click="listaEmpleados">Empleados</li>
+					<li id="itemHorario" v-on:click="listaHorarios">Horarios</li>
+					<li id="itemTareas" v-on:click="listaTareas">Tareas Asig.</li>
 				</ul>
 			</nav>
 			<button class="containerMenu_buttonSession">Cerrar Sesión</button>

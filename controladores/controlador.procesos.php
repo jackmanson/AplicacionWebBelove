@@ -86,6 +86,19 @@ class ControladorProcesos{
     public function controlListaEmpleados(){
         $controlEmpleados = new ModeloProcesos();
         $controlEmpleados->modeloListaEmpleados();
+
+    }
+
+    //LISTA DE PRODUCTOS
+    public function controlListaProductos(){
+        $controlProductos = new ModeloProcesos();
+        $controlProductos->modeloListaProductos();
+    }
+
+    //BUSCAR PRODUCTOS
+    public function controlBuscarProductos($buscarProductos){
+        $controlProductos = new ModeloProcesos();
+        $controlProductos->modeloBuscarProductos($buscarProductos);
     }
 
     //LISTA DE SERVICIOS
@@ -93,6 +106,42 @@ class ControladorProcesos{
         $controlServicios = new ModeloProcesos();
         $controlServicios->modeloListaServicios();
     }
+    
+    //LISTA DE HORARIO ESTILISTAS
+    public function controlListaHorariosEstilista(){
+        $controlHorariosEstilista = new ModeloProcesos();
+        $controlHorariosEstilista->modeloListaHorariosEstilista();
+    }
+
+    //LISTA DE HORARIO BARBEROS
+    public function controlListaHorariosBarbero(){
+        $controlHorariosBarbero = new ModeloProcesos();
+        $controlHorariosBarbero->modeloListaHorariosBarbero();
+    }
+
+    //LISTA DE HORARIO MANICURISTA
+    public function controlListaHorariosManicurista(){
+        $controlHorariosManicurista = new ModeloProcesos();
+        $controlHorariosManicurista->modeloListaHorariosManicurista();
+  }
+
+    //LISTA DE HORARIO ADMINISTRADORA Y CAJERA
+    public function controlListaHorariosAdminCajero(){
+        $controlHorariosAdminCajero = new ModeloProcesos();
+        $controlHorariosAdminCajero->modeloListaHorariosAdminCajero();
+  }
+
+    //LISTA DE HORARIO MANTENIMIENTO
+    public function controlListaHorariosMantenimiento(){
+        $controlHorariosMantenimiento = new ModeloProcesos();
+        $controlHorariosMantenimiento->modeloListaHorariosMantenimiento();
+  }
+
+    //LISTA DE HORARIO LIMPIEZA DE VITRINAS
+    public function controlListaHorariosLimpiezaVitrina(){
+        $controlHorariosLimpiezaVitrina = new ModeloProcesos();
+        $controlHorariosLimpiezaVitrina->modeloListaHorariosLimpiezaVitrina();
+  }
 
 }
 

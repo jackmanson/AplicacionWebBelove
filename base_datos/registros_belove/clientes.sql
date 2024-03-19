@@ -1,7 +1,7 @@
 
 
 
-
+select idClientes,NombrePersona from clientes inner join personas on clientes.idPersona = personas.idPersona
 
 
 INSERT INTO `clientes` (`idClientes`, `idPersona`, `Celular`, `idEstado`, `idUsuarioRegistra`, `FechaUsuarioRegistra`) VALUES

@@ -90,7 +90,9 @@
 					echo 	"<section class='containerLista_registros'>";
 					echo 	"	<div class='containerLista_filaClientes'>";
 					echo 	"		<p class='containerLista_item containerLista-head'>ID</p>";
-					echo 	"		<p class='containerLista_item containerLista-head'>NOMBRE</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>NOMBRES</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>APELLIDO PATERNO</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>APELLIDO MATERNO</p>";
 					echo 	"		<p class='containerLista_item containerLista-head'>CELULAR</p>";
 					echo 	"		<p class='containerLista_item containerLista-head'>CUMPLEAÑOS</p>";
 					echo 	"		<p class='containerLista_item containerLista-head'>COLABORADOR QUE REGISTRO</p>";
@@ -105,6 +107,46 @@
 					 				require_once "modelos/procesos.modelos.php";
 					 				$buscarClientes = new ControladorProcesos();
 					 				$buscarClientes -> controlBuscarClientes($buscar);
+
+					echo	"</section>";
+					unset($_POST['buscarClientes']);
+					// unset($buscar);
+					// unset($buscarClientes);
+				}
+				?>
+
+
+				<!-- RESULTADO DE BUSQUEDA PRODUCTOS -->
+				<?php
+				if(isset($_POST['buscarProductos'])){
+					echo 	"<section class='containerLista_tituloBuscar'>";
+					echo 	"	<h1 class='containerLista_title'>Buscando Clientes</h1>";
+					echo 	"	<form class='containerLista_buscar' method='POST' action='gestion.php'>";
+					echo 	"		<input class='containerLista_inputBuscar' type='search' name='buscarProductos' placeholder='Buscar Productos'>";
+					echo 	"	</form>";
+					echo 	"</section>";
+					
+					
+					echo 	"<section class='containerLista_registros'>";
+					echo 	"	<div class='containerLista_filaProductos'>";
+					echo 	"		<p class='containerLista_item containerLista-head'>ID</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>PRODUCTO</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>STOCK</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>PRECIO</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>ESTADO</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>USUARIO REGISTRA</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'>FECHA REGISTRO</p>";
+					echo 	"		<p class='containerLista_item containerLista-head'><i class='fa fa-plus-circle' aria-hidden='true'></i></p>";
+					echo 	"	</div>";
+					echo 	"</section>";
+					echo 	"<section class='containerLista_registros'>";
+							
+					 				$buscar = $_POST['buscarProductos'];
+					 			
+					 				require_once "controladores/controlador.procesos.php";     
+					 				require_once "modelos/procesos.modelos.php";
+					 				$buscarProduct = new ControladorProcesos();
+					 				$buscarProduct -> controlBuscarProductos($buscar);
 
 					echo	"</section>";
 					unset($_POST['buscarClientes']);

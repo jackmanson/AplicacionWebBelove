@@ -21,5 +21,12 @@ INSERT INTO `empleados` (`idEmpleados`,`idPersona`,`idEstado`,`idCargoEmpleado`,
 
 
 
+select idEmpleados,NombrePersona,Email,NombreCargo,NombreEstado from empleados 
+inner join personas on empleados.idPersona=personas.idPersona
+inner join cargosempleados on empleados.idCargoEmpleado=cargosempleados.idCargo
+inner join estados on empleados.idEstado=estados.idEstado
+
+
+
 
 

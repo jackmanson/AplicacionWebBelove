@@ -7,7 +7,7 @@ class Conexion{
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $data = "db_belove_modelo_1";
+        $data = "db_belove_modelo_3";
 
         // Create connection --MySQLi Procedural
         $con = mysqli_connect($servername,$username,$password,$data);

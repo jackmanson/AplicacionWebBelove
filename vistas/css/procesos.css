@@ -201,7 +201,9 @@
 .containerLista_registros>.containerLista_filaCatalogo,
 .containerLista_registros>.containerLista_filaProductos,
 .containerLista_registros>.containerLista_filaServicios,
-.containerLista_registros>.containerLista_filaEmpleados{
+.containerLista_registros>.containerLista_filaEmpleados,
+.containerLista_registros>.containerLista_filaHorarios,
+.containerLista_registros>.containerLista_filaTareasAsignadas{
     width: 100%;
     height: 80px;
     margin-bottom: 6px;
@@ -215,7 +217,7 @@
 
 .containerLista_filaClientes{
     display: grid;
-    grid-template-columns: 70px 1fr 1fr 1fr 1fr 50px;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 50px;
 }
 
 .containerLista_filaAtencion{
@@ -245,7 +247,7 @@
 
 .containerLista_filaProductos{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 50px;
 }
 
 .containerLista_filaServicios{
@@ -255,7 +257,17 @@
 
 .containerLista_filaEmpleados{
     display: grid;
-    grid-template-columns: 70px 1fr 1fr 1fr 50px;
+    grid-template-columns: 70px 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaHorarios{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
+}
+
+.containerLista_filaTareasAsignadas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 50px;
 }
 
 .containerLista_filaCitas > p,
@@ -267,7 +279,9 @@
 .containerLista_filaCatalogo>p,
 .containerLista_filaProductos>p,
 .containerLista_filaServicios>p,
-.containerLista_filaEmpleados>p{
+.containerLista_filaEmpleados>p,
+.containerLista_filaHorarios>p,
+.containerLista_filaTareasAsignadas>p{
     margin: 0px;
     padding: 12px;
     justify-self: start;
@@ -283,7 +297,9 @@
 .containerLista_filaCatalogo:hover,
 .containerLista_filaProductos:hover,
 .containerLista_filaServicios:hover,
-.containerLista_filaEmpleados:hover{
+.containerLista_filaEmpleados:hover,
+.containerLista_filaHorarios:hover,
+.containerLista_filaTareasAsignadas:hover{
     background-color: var(--gris-claro);
     color: var(--black);
 }
