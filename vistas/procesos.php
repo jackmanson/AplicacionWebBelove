@@ -379,11 +379,11 @@
 				</section>
 				<section class="containerLista_registros" v-if="Tareas == 1">
 						<?php 
-							require_once "controladores/controlador.procesos.php";     
-							require_once "modelos/procesos.modelos.php";
+							// require_once "controladores/controlador.procesos.php";     
+							// require_once "modelos/procesos.modelos.php";
 					
-							$listaHorariosLimpiezaVitrina = new ControladorProcesos();
-							$listaHorariosLimpiezaVitrina -> controlListaHorariosLimpiezaVitrina();
+							// $listaHorariosLimpiezaVitrina = new ControladorProcesos();
+							// $listaHorariosLimpiezaVitrina -> controlListaHorariosLimpiezaVitrina();
 						?>
 				</section>
 

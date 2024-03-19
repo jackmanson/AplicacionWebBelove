@@ -31,7 +31,7 @@ class ModeloLogin{
             $conecta = new Conexion();
             $con = $conecta->conectarProcedural();
 
-            $consulta = "SELECT email,pass FROM USUARIO WHERE EMAIL='$email' AND PASS='$clave'"; 
+            $consulta = "SELECT email,pass FROM USUARIOS WHERE EMAIL='$email' AND PASS='$clave'"; 
             $resultado = mysqli_query($con,$consulta);
             
             $fila = mysqli_fetch_row($resultado); // almacena en fila una tabla array
